@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- =========================================================
+         [INÍCIO] META / TÍTULO
+    ========================================================== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Tetris Fácil de Español — Singular y Plural</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- =========================================================
+         [FIM] META / TÍTULO
+    ========================================================== -->
+
+    <style>
+        /* =========================================================
+           [INÍCIO] TEMA / RESET
+        ========================================================== */
+        :root{
+            --bg:#0f172a;
+            --panel:#111827;
+            --panel-2:#1f2937;
+            --line:#334155;
+            --text:#f8fafc;
+            --muted:#cbd5e1;
+            --cyan:#22d3ee;
+            --pink:#f472b6;
+            --yellow:#facc15;
+            --green:#4ade80;
+            --red:#f87171;
+            --canvas-bg:#172033;
+        }
+
+        *{ box-sizing:border-box; }
+
+        html, body{
+            margin:0;
+            padding:0;
+            width:100%;
+            min-height:100%;
+            background:linear-gradient(180deg,#0f172a 0%, #111827 100%);
+            color:var(--text);
+            font-family:Arial, Helvetica, sans-serif;
+            overflow-x:hidden;
+        }
+
+        body{
+            padding:10px;
+        }
+
+        .app{
+            width:100%;
+            max-width:1100px;
+            margin:0 auto;
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+        }
+
+        .card{
+            background:var(--panel);
+            border:2px solid var(--line);
+            border-radius:18px;
+            box-shadow:0 10px 25px rgba(0,0,0,.25);
+        }
+
+        .title-glow{
+            text-shadow:0 0 10px rgba(34,211,238,.25);
+        }
+
+        .info-box{
+            background:var(--panel-2);
+            border:1px solid #475569;
+            border-radius:14px;
+        }
+
+        .label{
+            font-size:.74rem;
+            text-transform:uppercase;
+            letter-spacing:.08em;
+            color:#94a3b8;
+            margin-bottom:4px;
+            font-weight:700;
+        }
+
+        .big-value{
+            font-size:1.6rem;
+            font-weight:800;
+        }
+
+        .game-wrap{
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+        }
+
+        .canvas-box{
+            position:relative;
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:8px;
+            overflow:hidden;
+        }
+
+        #game-canvas{
+            display:block;
+            width:min(100%, 360px);
+            height:auto;
+            background:var(--canvas-bg);
+            border:4px solid #475569;
+            border-radius:14px;
+            box-shadow:0 0 20px rgba(0,0,0,.28);
+            touch-action:none;
+        }
+
+        #game-over{
+            position:absolute;
+            inset:8px;
+            display:none;
+            background:rgba(0,0,0,.82);
+            border-radius:14px;
+            padding:20px;
+            align-items:center;
+            justify-content:center;
+            flex-direction:column;
+            text-align:center;
+        }
+
+        #game-over.show{
+            display:flex;
+        }
+
+        .touch-controls{
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:8px;
+            width:100%;
+        }
+
+        .touch-btn{
+            border:none;
+            border-radius:14px;
+            padding:14px 10px;
+            font-size:1.2rem;
+            font-weight:800;
+            background:#1e293b;
+            color:white;
+            border:2px solid #475569;
+            box-shadow:0 4px 10px rgba(0,0,0,.2);
+            min-height:56px;
+        }
+
+        .touch-btn:active{
+            transform:scale(.97);
+            background:#334155;
+        }
+
+        .primary-btn{
+            border:none;
+            border-radius:12px;
+            padding:12px 18px;
+            font-size:1rem;
+            font-weight:700;
+            background:#0891b2;
+            color:#fff;
+        }
+
+        .primary-btn:active{
+            transform:scale(.98);
+        }
+
+        .desktop-grid{
+            display:grid;
+            grid-template-columns:1fr;
+            gap:12px;
+        }
+
+        @media (min-width: 900px){
+            .desktop-grid{
+                grid-template-columns:minmax(320px, 420px) minmax(280px, 320px);
+                align-items:start;
+            }
+        }
+
+        .hint{
+            font-size:.92rem;
+            line-height:1.45;
+            color:var(--muted);
+        }
+
+        .mission-pill{
+            display:inline-block;
+            padding:6px 12px;
+            border-radius:999px;
+            font-weight:800;
+            font-size:.92rem;
+            background:#0f172a;
+            border:1px solid #475569;
+            color:var(--cyan);
+        }
+
+        .feedback-good{ color:var(--green); }
+        .feedback-warn{ color:var(--yellow); }
+        .feedback-normal{ color:#e2e8f0; }
+
+        .hide-mobile{
+            display:none;
+        }
+
+        @media (min-width:900px){
+            .hide-mobile{
+                display:block;
+            }
+        }
+        /* =========================================================
+           [FIM] TEMA / RESET
+        ========================================================== */
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- =====================================================
+             [INÍCIO] CABEÇALHO
+        ====================================================== -->
+        <header class="card p-4 text-center">
+            <h1 class="title-glow text-2xl md:text-3xl font-bold text-cyan-300">
+                Tetris Fácil de Español
+            </h1>
+            <p class="text-slate-300 mt-2">
+                Aprenda <span class="text-pink-300 font-bold">singular</span> e
+                <span class="text-cyan-300 font-bold">plural</span> de forma simples.
+            </p>
+        </header>
+        <!-- =====================================================
+             [FIM] CABEÇALHO
+        ====================================================== -->
+
+        <!-- =====================================================
+             [INÍCIO] ÁREA PRINCIPAL
+        ====================================================== -->
+        <main class="desktop-grid">
+            <!-- =================================================
+                 [INÍCIO] COLUNA DO JOGO
+            ================================================== -->
+            <section class="game-wrap card p-3">
+                <!-- =============================================
+                     [INÍCIO] CANVAS
+                ============================================== -->
+                <div class="canvas-box">
+                    <canvas id="game-canvas"></canvas>
+
+                    <div id="game-over">
+                        <h2 class="text-3xl font-bold text-red-400 mb-2">¡Fin del juego!</h2>
+                        <p id="final-score" class="text-lg text-white mb-2"></p>
+                        <p class="text-sm text-slate-300 mb-4 max-w-[260px]">
+                            Tente novamente e monte linhas com o tipo pedido.
+                        </p>
+                        <button class="primary-btn" onclick="resetGame()">Jogar novamente</button>
+                    </div>
+                </div>
+                <!-- =============================================
+                     [FIM] CANVAS
+                ============================================== -->
+
+                <!-- =============================================
+                     [INÍCIO] CONTROLES TOUCH
+                ============================================== -->
+                <div class="touch-controls">
+                    <button class="touch-btn" id="btn-left">⬅️</button>
+                    <button class="touch-btn" id="btn-rotate">🔄</button>
+                    <button class="touch-btn" id="btn-down">⬇️</button>
+                    <button class="touch-btn" id="btn-right">➡️</button>
+                </div>
+
+                <div class="touch-controls">
+                    <button class="touch-btn col-span-4" id="btn-drop" style="grid-column:1 / -1;">
+                        ⚡ Queda rápida
+                    </button>
+                </div>
+                <!-- =============================================
+                     [FIM] CONTROLES TOUCH
+                ============================================== -->
+            </section>
+            <!-- =================================================
+                 [FIM] COLUNA DO JOGO
+            ================================================== -->
+
+            <!-- =================================================
+                 [INÍCIO] PAINEL LATERAL
+            ================================================== -->
+            <aside class="flex flex-col gap-3">
+                <div class="card p-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="info-box p-3">
+                            <div class="label">Pontuação</div>
+                            <div id="score" class="big-value text-yellow-300">0</div>
+                        </div>
+                        <div class="info-box p-3">
+                            <div class="label">Nível</div>
+                            <div id="level" class="big-value text-green-400">1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-3">
+                    <div class="label">Palavra atual</div>
+                    <div class="info-box p-3 text-center">
+                        <div id="current-word" class="text-2xl font-bold text-pink-300">-</div>
+                        <div id="current-type" class="text-sm text-slate-300 italic mt-1">Tipo</div>
+                        <div id="current-pair" class="text-sm text-cyan-300 mt-2">Par: -</div>
+                    </div>
+                </div>
+
+                <div class="card p-3">
+                    <div class="label">Missão</div>
+                    <div class="info-box p-3">
+                        <div id="mission-label" class="mission-pill">Forme linha com PLURAL</div>
+                        <p class="hint mt-3">
+                            Tente completar a linha com mais blocos do tipo pedido.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card p-3">
+                    <div class="label">Aprendizagem</div>
+                    <div class="info-box p-3">
+                        <div id="feedback" class="feedback-normal text-sm font-semibold">
+                            Observe a palavra e seu plural antes de encaixar a peça.
+                        </div>
+                        <div class="mt-3 text-sm text-slate-300">
+                            Exemplo:
+                            <span id="example-singular" class="text-pink-300 font-bold">perro</span>
+                            →
+                            <span id="example-plural" class="text-cyan-300 font-bold">perros</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-3 hide-mobile">
+                    <div class="label">Teclado</div>
+                    <div class="hint">
+                        ⬅️ ➡️ mover<br>
+                        ⬆️ girar<br>
+                        ⬇️ descer<br>
+                        ESPAÇO queda rápida
+                    </div>
+                </div>
+            </aside>
+            <!-- =================================================
+                 [FIM] PAINEL LATERAL
+            ================================================== -->
+        </main>
+        <!-- =====================================================
+             [FIM] ÁREA PRINCIPAL
+        ====================================================== -->
+    </div>
+
+    <script>
+        /* =========================================================
+           [INÍCIO] DOM
+        ========================================================== */
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+
+        const scoreElement = document.getElementById('score');
+        const levelElement = document.getElementById('level');
+        const currentWordText = document.getElementById('current-word');
+        const currentTypeText = document.getElementById('current-type');
+        const currentPairText = document.getElementById('current-pair');
+        const missionLabel = document.getElementById('mission-label');
+        const feedbackElement = document.getElementById('feedback');
+        const exampleSingular = document.getElementById('example-singular');
+        const examplePlural = document.getElementById('example-plural');
+        const gameOverScreen = document.getElementById('game-over');
+        const finalScoreText = document.getElementById('final-score');
+
+        const btnLeft = document.getElementById('btn-left');
+        const btnRight = document.getElementById('btn-right');
+        const btnDown = document.getElementById('btn-down');
+        const btnRotate = document.getElementById('btn-rotate');
+        const btnDrop = document.getElementById('btn-drop');
+        /* =========================================================
+           [FIM] DOM
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] CONFIGURAÇÕES
+        ========================================================== */
+        const ROWS = 16;
+        const COLS = 8;
+        const BLOCK_SIZE = 40;
+
+        canvas.width = COLS * BLOCK_SIZE;
+        canvas.height = ROWS * BLOCK_SIZE;
+        /* =========================================================
+           [FIM] CONFIGURAÇÕES
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] DICIONÁRIO PEDAGÓGICO
+        ========================================================== */
+        const dictionary = [
+            { base:'perro',  singular:'perro',  plural:'perros',  type:'Singular', color:'#ef4444', text:'perro' },
+            { base:'perro',  singular:'perro',  plural:'perros',  type:'Plural',   color:'#ef4444', text:'perros' },
+
+            { base:'casa',   singular:'casa',   plural:'casas',   type:'Singular', color:'#3b82f6', text:'casa' },
+            { base:'casa',   singular:'casa',   plural:'casas',   type:'Plural',   color:'#3b82f6', text:'casas' },
+
+            { base:'flor',   singular:'flor',   plural:'flores',  type:'Singular', color:'#22c55e', text:'flor' },
+            { base:'flor',   singular:'flor',   plural:'flores',  type:'Plural',   color:'#22c55e', text:'flores' },
+
+            { base:'niño',   singular:'niño',   plural:'niños',   type:'Singular', color:'#f97316', text:'niño' },
+            { base:'niño',   singular:'niño',   plural:'niños',   type:'Plural',   color:'#f97316', text:'niños' },
+
+            { base:'luz',    singular:'luz',    plural:'luces',   type:'Singular', color:'#facc15', text:'luz' },
+            { base:'luz',    singular:'luz',    plural:'luces',   type:'Plural',   color:'#facc15', text:'luces' },
+
+            { base:'papel',  singular:'papel',  plural:'papeles', type:'Singular', color:'#a855f7', text:'papel' },
+            { base:'papel',  singular:'papel',  plural:'papeles', type:'Plural',   color:'#a855f7', text:'papeles' }
+        ];
+        /* =========================================================
+           [FIM] DICIONÁRIO PEDAGÓGICO
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] PEÇAS SIMPLES
+           - Mantive menos peças grandes e fáceis para o aluno
+        ========================================================== */
+        const PIECES = [
+            [[1,1],[1,1]],           // quadrado
+            [[1,1,1,1]],             // linha
+            [[1,1,1],[0,1,0]],       // T
+            [[1,1,0],[0,1,1]]        // Z
+        ];
+        /* =========================================================
+           [FIM] PEÇAS SIMPLES
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] ESTADO
+        ========================================================== */
+        let board = [];
+        let score = 0;
+        let level = 1;
+        let gameOver = false;
+        let dropCounter = 0;
+        let dropInterval = 1300;
+        let lastTime = 0;
+        let animationId = null;
+        let currentMission = 'Plural';
+
+        let player = {
+            pos: { x: 0, y: 0 },
+            matrix: null,
+            wordData: null
+        };
+        /* =========================================================
+           [FIM] ESTADO
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] FUNÇÕES AUXILIARES
+        ========================================================== */
+        function createEmptyBoard(){
+            return Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+        }
+
+        function randomItem(array){
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function chooseMission(){
+            currentMission = Math.random() > 0.5 ? 'Singular' : 'Plural';
+            missionLabel.textContent = `Forme linha com ${currentMission.toUpperCase()}`;
+        }
+
+        function setFeedback(message, type = 'normal'){
+            feedbackElement.className = `text-sm font-semibold ${
+                type === 'good' ? 'feedback-good' :
+                type === 'warn' ? 'feedback-warn' :
+                'feedback-normal'
+            }`;
+            feedbackElement.textContent = message;
+        }
+
+        function updateWordPanel(wordData){
+            currentWordText.textContent = wordData.text;
+            currentTypeText.textContent = wordData.type;
+            currentPairText.textContent = `Par: ${wordData.singular} → ${wordData.plural}`;
+            exampleSingular.textContent = wordData.singular;
+            examplePlural.textContent = wordData.plural;
+        }
+        /* =========================================================
+           [FIM] FUNÇÕES AUXILIARES
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] PEÇA DO JOGADOR
+        ========================================================== */
+        function createPiece(){
+            return {
+                matrix: randomItem(PIECES),
+                wordData: randomItem(dictionary)
+            };
+        }
+
+        function playerReset(){
+            const next = createPiece();
+
+            player.matrix = next.matrix.map(row => [...row]);
+            player.wordData = next.wordData;
+            player.pos.y = 0;
+            player.pos.x = Math.floor((COLS - player.matrix[0].length) / 2);
+
+            updateWordPanel(player.wordData);
+
+            if(collide(board, player)){
+                gameOver = true;
+                finalScoreText.textContent = `Pontos: ${Math.floor(score)}`;
+                gameOverScreen.classList.add('show');
+                cancelAnimationFrame(animationId);
+            }
+        }
+        /* =========================================================
+           [FIM] PEÇA DO JOGADOR
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] DESENHO
+        ========================================================== */
+        function draw(){
+            ctx.fillStyle = '#172033';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            drawGrid();
+            drawBoard();
+            drawPlayer();
+        }
+
+        function drawGrid(){
+            ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+            ctx.lineWidth = 1;
+
+            for(let x = 0; x <= COLS; x++){
+                ctx.beginPath();
+                ctx.moveTo(x * BLOCK_SIZE, 0);
+                ctx.lineTo(x * BLOCK_SIZE, canvas.height);
+                ctx.stroke();
+            }
+
+            for(let y = 0; y <= ROWS; y++){
+                ctx.beginPath();
+                ctx.moveTo(0, y * BLOCK_SIZE);
+                ctx.lineTo(canvas.width, y * BLOCK_SIZE);
+                ctx.stroke();
+            }
+        }
+
+        function drawBoard(){
+            board.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    if(cell !== 0){
+                        drawBlock(x, y, cell.color, cell.word, cell.type);
+                    }
+                });
+            });
+        }
+
+        function drawPlayer(){
+            if(!player.matrix || !player.wordData) return;
+
+            player.matrix.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if(value){
+                        drawBlock(
+                            x + player.pos.x,
+                            y + player.pos.y,
+                            player.wordData.color,
+                            player.wordData.text,
+                            player.wordData.type
+                        );
+                    }
+                });
+            });
+        }
+
+        function drawBlock(x, y, color, word, type){
+            const px = x * BLOCK_SIZE;
+            const py = y * BLOCK_SIZE;
+
+            ctx.fillStyle = color;
+            ctx.fillRect(px, py, BLOCK_SIZE, BLOCK_SIZE);
+
+            ctx.fillStyle = 'rgba(255,255,255,.18)';
+            ctx.fillRect(px + 2, py + 2, BLOCK_SIZE - 4, 6);
+
+            ctx.strokeStyle = '#0f172a';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(px, py, BLOCK_SIZE, BLOCK_SIZE);
+
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 10px Arial';
+            ctx.fillText(word.slice(0, 5), px + BLOCK_SIZE / 2, py + BLOCK_SIZE / 2 - 4);
+
+            ctx.font = 'bold 9px Arial';
+            ctx.fillStyle = type === 'Plural' ? '#a5f3fc' : '#fbcfe8';
+            ctx.fillText(type === 'Plural' ? 'PL' : 'SG', px + BLOCK_SIZE / 2, py + BLOCK_SIZE - 8);
+        }
+        /* =========================================================
+           [FIM] DESENHO
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] COLISÃO / MERGE
+        ========================================================== */
+        function collide(board, player){
+            const m = player.matrix;
+            const o = player.pos;
+
+            for(let y = 0; y < m.length; y++){
+                for(let x = 0; x < m[y].length; x++){
+                    if(
+                        m[y][x] !== 0 &&
+                        (
+                            board[y + o.y] === undefined ||
+                            board[y + o.y][x + o.x] === undefined ||
+                            board[y + o.y][x + o.x] !== 0
+                        )
+                    ){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function merge(board, player){
+            player.matrix.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if(value !== 0){
+                        board[y + player.pos.y][x + player.pos.x] = {
+                            color: player.wordData.color,
+                            word: player.wordData.text,
+                            type: player.wordData.type,
+                            singular: player.wordData.singular,
+                            plural: player.wordData.plural
+                        };
+                    }
+                });
+            });
+        }
+        /* =========================================================
+           [FIM] COLISÃO / MERGE
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] MOVIMENTOS
+        ========================================================== */
+        function playerMove(dir){
+            player.pos.x += dir;
+            if(collide(board, player)){
+                player.pos.x -= dir;
+            }
+        }
+
+        function rotate(matrix){
+            return matrix[0].map((_, i) => matrix.map(row => row[i]).reverse());
+        }
+
+        function playerRotate(){
+            const previous = player.matrix.map(row => [...row]);
+            player.matrix = rotate(player.matrix);
+
+            if(collide(board, player)){
+                player.matrix = previous;
+            }
+        }
+
+        function playerDrop(){
+            player.pos.y++;
+
+            if(collide(board, player)){
+                player.pos.y--;
+                merge(board, player);
+                clearLines();
+                playerReset();
+                updateScore();
+            }
+
+            dropCounter = 0;
+        }
+
+        function hardDrop(){
+            while(!collide(board, player)){
+                player.pos.y++;
+            }
+            player.pos.y--;
+            merge(board, player);
+            clearLines();
+            playerReset();
+            updateScore();
+            dropCounter = 0;
+        }
+        /* =========================================================
+           [FIM] MOVIMENTOS
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] LIMPEZA DE LINHAS
+        ========================================================== */
+        function clearLines(){
+            let rowCount = 1;
+            let cleaned = false;
+
+            outer:
+            for(let y = ROWS - 1; y >= 0; y--){
+                for(let x = 0; x < COLS; x++){
+                    if(board[y][x] === 0){
+                        continue outer;
+                    }
+                }
+
+                cleaned = true;
+
+                const types = board[y].map(cell => cell.type);
+                const singularCount = types.filter(t => t === 'Singular').length;
+                const pluralCount = types.filter(t => t === 'Plural').length;
+                const dominantType = pluralCount > singularCount ? 'Plural' : 'Singular';
+
+                let multiplier = 1;
+                if(dominantType === currentMission){
+                    multiplier = 2;
+                    setFeedback(`Muito bem! A linha ficou mais ${currentMission.toLowerCase()}.`, 'good');
+                } else {
+                    setFeedback(`Linha limpa, mas a missão era ${currentMission.toLowerCase()}.`, 'warn');
+                }
+
+                const row = board.splice(y, 1)[0].fill(0);
+                board.unshift(row);
+                y++;
+
+                score += rowCount * 100 * multiplier;
+                rowCount *= 2;
+
+                chooseMission();
+            }
+
+            if(!cleaned){
+                setFeedback(`Observe: ${player.wordData.singular} → ${player.wordData.plural}`, 'normal');
+            }
+        }
+        /* =========================================================
+           [FIM] LIMPEZA DE LINHAS
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] PONTUAÇÃO
+        ========================================================== */
+        function updateScore(){
+            scoreElement.textContent = Math.floor(score);
+            level = Math.floor(score / 800) + 1;
+            levelElement.textContent = level;
+            dropInterval = Math.max(500, 1300 - ((level - 1) * 100));
+        }
+        /* =========================================================
+           [FIM] PONTUAÇÃO
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] LOOP
+        ========================================================== */
+        function update(time = 0){
+            if(gameOver) return;
+
+            const deltaTime = time - lastTime;
+            lastTime = time;
+
+            dropCounter += deltaTime;
+            if(dropCounter > dropInterval){
+                playerDrop();
+            }
+
+            draw();
+            animationId = requestAnimationFrame(update);
+        }
+        /* =========================================================
+           [FIM] LOOP
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] RESET
+        ========================================================== */
+        function resetGame(){
+            board = createEmptyBoard();
+            score = 0;
+            level = 1;
+            gameOver = false;
+            dropCounter = 0;
+            dropInterval = 1300;
+            lastTime = 0;
+
+            chooseMission();
+            updateScore();
+            setFeedback('Novo jogo iniciado. Observe a palavra antes de encaixar.', 'normal');
+
+            gameOverScreen.classList.remove('show');
+
+            playerReset();
+
+            cancelAnimationFrame(animationId);
+            update();
+        }
+        /* =========================================================
+           [FIM] RESET
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] EVENTOS TECLADO
+        ========================================================== */
+        document.addEventListener('keydown', (event) => {
+            if(gameOver) return;
+
+            if(event.code === 'ArrowLeft'){
+                event.preventDefault();
+                playerMove(-1);
+            } else if(event.code === 'ArrowRight'){
+                event.preventDefault();
+                playerMove(1);
+            } else if(event.code === 'ArrowDown'){
+                event.preventDefault();
+                playerDrop();
+            } else if(event.code === 'ArrowUp'){
+                event.preventDefault();
+                playerRotate();
+            } else if(event.code === 'Space'){
+                event.preventDefault();
+                hardDrop();
+            }
+        });
+        /* =========================================================
+           [FIM] EVENTOS TECLADO
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] EVENTOS TOUCH
+        ========================================================== */
+        btnLeft.addEventListener('click', () => {
+            if(!gameOver) playerMove(-1);
+        });
+
+        btnRight.addEventListener('click', () => {
+            if(!gameOver) playerMove(1);
+        });
+
+        btnDown.addEventListener('click', () => {
+            if(!gameOver) playerDrop();
+        });
+
+        btnRotate.addEventListener('click', () => {
+            if(!gameOver) playerRotate();
+        });
+
+        btnDrop.addEventListener('click', () => {
+            if(!gameOver) hardDrop();
+        });
+        /* =========================================================
+           [FIM] EVENTOS TOUCH
+        ========================================================== */
+
+        /* =========================================================
+           [INÍCIO] INICIALIZAÇÃO
+        ========================================================== */
+        board = createEmptyBoard();
+        chooseMission();
+        updateScore();
+        setFeedback('Comece observando a palavra e seu plural.', 'normal');
+        playerReset();
+        update();
+        /* =========================================================
+           [FIM] INICIALIZAÇÃO
+        ========================================================== */
+    </script>
+</body>
+</html>

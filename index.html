@@ -1,0 +1,4227 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<!-- =========================================================
+       AULA 11 PREMIUM FALANGE — GÉNERO Y NÚMERO
+       TEMA:
+       - Género y número de los sustantivos y adjetivos en español
+
+       ESTRUTURA PREMIUM (4 páginas):
+       - P1: Conteúdo visual + mini-livro + labirinto interativo
+       - P2: Duck Hunt de palabras masculinas
+       - P3: Jogo de classificação + memória de pares
+       - P4: Escape Room + certificado
+  ========================================================== -->
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>Espanhol — Aula 11 (Premium Falange): Género y Número</title>
+<style>
+  /* =========================================================
+     [INÍCIO] 0) RESET + VARIÁVEIS GERAIS
+  ========================================================== */
+  :root{
+    --paper:#f3f4df;
+    --blue:#3aa0e6;
+    --violet:#9b59b6;
+    --red:#d94b3a;
+    --green:#2ecc71;
+    --yellow:#f4c542;
+    --ink:#111;
+    --shadow:0 10px 30px rgba(0,0,0,.18);
+    --masc:#cfefff;
+    --fem:#ffd8ef;
+    --sing:#fff1ba;
+    --plur:#d8ffd8;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ max-width:100%; }
+  img{ max-width:100%; display:block; }
+  [hidden]{ display:none !important; }
+  .duckPreload{
+    display:none !important;
+    visibility:hidden !important;
+    width:0 !important;
+    height:0 !important;
+    overflow:hidden !important;
+    position:absolute !important;
+    left:-99999px !important;
+    top:-99999px !important;
+    pointer-events:none !important;
+  }
+  button,input,select{ font:inherit; }
+
+  body{
+    margin:0;
+    background:#e5e7eb;
+    font-family: Arial, Helvetica, sans-serif;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow-x:auto;
+    overflow-y:auto;
+  }
+
+  .wrap{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    padding-bottom:18px;
+  }
+  /* =========================================================
+     [FIM] 0) RESET + VARIÁVEIS GERAIS
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 1) REGISTRO DO ESTUDANTE
+  ========================================================== */
+  #studentRegister{
+    width:min(560px, calc(100vw - 24px));
+    margin:14px auto 10px auto;
+    background:#fff;
+    border:3px solid var(--blue);
+    border-radius:14px;
+    padding:14px;
+    box-shadow:var(--shadow);
+  }
+  .regTitle,
+  .regLabel,
+  .regInput,
+  .regBtn{
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+  }
+  .regTitle{
+    text-align:center;
+    color:var(--violet);
+    letter-spacing:.4px;
+    margin-bottom:10px;
+    text-transform:uppercase;
+  }
+  .regRow{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:8px;
+    align-items:center;
+    margin-bottom:8px;
+  }
+  .regLabel{ font-size:9.5pt; color:#111; text-align:right; }
+  .regInput{
+    height:36px;
+    padding:0 10px;
+    border:2px solid rgba(0,0,0,.35);
+    border-radius:10px;
+    outline:none;
+  }
+  .regBtn{
+    width:100%;
+    height:40px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background:var(--blue);
+    color:#fff;
+    letter-spacing:.4px;
+  }
+  .regHint{ margin-top:8px; font-size:9pt; text-align:center; color:#111; }
+  /* =========================================================
+     [FIM] 1) REGISTRO DO ESTUDANTE
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 2) PÁGINA PADRÃO + CABEÇALHO
+  ========================================================== */
+  .page{
+    width:297mm;
+    height:320mm;
+    background:var(--paper);
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    display:block;
+    margin:0 auto;
+  }
+  .content{
+    position:absolute;
+    left:18mm;
+    right:18mm;
+    top:16mm;
+    bottom:18mm;
+  }
+  .content::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(1200px 600px at 82% 12%, rgba(58,160,230,.14), transparent 60%),
+      radial-gradient(1200px 600px at 14% 92%, rgba(155,89,182,.14), transparent 62%),
+      linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,.28));
+    z-index:0;
+    pointer-events:none;
+  }
+  .content > *{ position:relative; z-index:1; }
+
+  .titleRow{
+    margin-top:6px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    column-gap:10px;
+  }
+  .bncc{
+    font-weight:700;
+    font-size:10pt;
+    color:#000;
+    text-align:right;
+  }
+  .centerTitle{
+    color:var(--violet);
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    font-size:11pt;
+    text-align:center;
+  }
+  .bars{
+    margin-top:5px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+  }
+  .bar{ height:7px; background:var(--blue); border-radius:2px; }
+  /* =========================================================
+     [FIM] 2) PÁGINA PADRÃO + CABEÇALHO
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 3) COMPONENTES BASE
+  ========================================================== */
+  .cols{ margin-top:8px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .cols.oneCol{ grid-template-columns:1fr; }
+  .card{
+    background:#fff;
+    border:2px dotted var(--violet);
+    border-radius:14px;
+    padding:10px;
+  }
+  .cardTitle,
+  .badge,
+  .ctrlBtn,
+  .answerMsg,
+  .tag,
+  .answerInput,
+  .answerBtn,
+  .choicePrompt,
+  .choiceBtn,
+  .matchColTitle,
+  .matchBtn,
+  .bucketTitle,
+  .bucketHint,
+  .chip,
+  .memoryCard,
+  .missionBox,
+  .escapeChoice,
+  .keySlot,
+  .codeDisplay,
+  .codeInput,
+  .unlockBox,
+  #infoTitle,
+  #infoES,
+  #infoPT,
+  #infoRule,
+  #infoExample,
+  .overlayBtn,
+  .certBtn,
+  #certSub,
+  #certName,
+  #certMeta{
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+  }
+  .cardTitle{ text-align:center; font-size:10.4pt; margin-bottom:8px; color:#4a148c; }
+  .hint{ font-size:9.2pt; line-height:1.25; color:var(--ink); text-align:center; margin:0 0 6px 0; }
+  .actText{ font-size:9.2pt; line-height:1.28; text-align:justify; margin:0; color:#111; }
+  .badgeRow{ display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+  .badge{ background:rgba(58,160,230,.10); border:2px solid rgba(0,0,0,.20); border-radius:999px; padding:3px 10px; font-size:9pt; }
+  .tagMasc{ background:linear-gradient(#fff, var(--masc)); }
+  .tagFem{ background:linear-gradient(#fff, var(--fem)); }
+  .tagSing{ background:linear-gradient(#fff, var(--sing)); }
+  .tagPlur{ background:linear-gradient(#fff, var(--plur)); }
+  .controls{ margin-top:8px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .ctrlBtn{ border:2px solid rgba(0,0,0,.55); background:#fff; border-radius:999px; padding:6px 10px; font-size:9pt; cursor:pointer; }
+  .ctrlBtnPrimary{ background:var(--blue); color:#fff; border-color:transparent; }
+  .ctrlBtnGood{ background:var(--green); color:#fff; border-color:transparent; }
+  .answerMsg{ margin-top:6px; font-size:9pt; text-align:center; }
+  /* =========================================================
+     [FIM] 3) COMPONENTES BASE
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 4) PÁGINA 1 — MINI-LIVRO
+  ========================================================== */
+  .infoGrid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .infoBtn{
+    border:2px solid rgba(0,0,0,.22);
+    border-radius:16px;
+    padding:10px;
+    background:linear-gradient(#ffffff, rgba(255,255,255,.82));
+    cursor:pointer;
+    box-shadow:0 6px 14px rgba(0,0,0,.10);
+    text-align:left;
+    min-height:74px;
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+  }
+  .infoBtn small{ display:block; font-size:9pt; opacity:.9; margin-top:4px; }
+
+  .bookShell{
+    margin-top:8px;
+    border:3px solid rgba(0,0,0,.14);
+    border-radius:24px;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,.95), rgba(255,255,255,.82)),
+      linear-gradient(135deg, rgba(58,160,230,.10), rgba(155,89,182,.10));
+    padding:12px;
+    box-shadow:inset 0 0 0 3px rgba(255,255,255,.55), 0 10px 24px rgba(0,0,0,.10);
+  }
+  .bookTopBar{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:10px; }
+  .bookChip{
+    padding:6px 12px;
+    border-radius:999px;
+    background:linear-gradient(180deg, #ffffff, #eaf6ff);
+    border:2px solid rgba(0,0,0,.12);
+    font-weight:900;
+    font-size:8.8pt;
+    color:#233;
+    box-shadow:0 4px 10px rgba(0,0,0,.06);
+  }
+  .bookViewport{
+    border:2px dashed rgba(0,0,0,.14);
+    border-radius:24px;
+    background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,253,247,.98));
+    padding:12px;
+    min-height:455px;
+    position:relative;
+    overflow:hidden;
+  }
+  .bookViewport::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255,208,225,.25), transparent 28%),
+      radial-gradient(circle at 85% 18%, rgba(58,160,230,.18), transparent 24%),
+      radial-gradient(circle at 50% 88%, rgba(244,197,66,.16), transparent 22%);
+    pointer-events:none;
+  }
+  .bookPage{ display:none; animation:fadeBook .28s ease; position:relative; z-index:1; }
+  .bookPage.active{ display:block; }
+  .bookPageTitle{ text-align:center; font-weight:900; font-size:13pt; color:#4a148c; margin-bottom:10px; letter-spacing:.3px; }
+  .bookIntroCard{
+    display:grid;
+    grid-template-columns:88px 1fr;
+    gap:10px;
+    align-items:center;
+    padding:10px;
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(244,249,255,.96));
+    border:2px solid rgba(0,0,0,.10);
+    box-shadow:0 6px 14px rgba(0,0,0,.06);
+    margin-bottom:10px;
+  }
+  .bookSticker{
+    width:88px;
+    height:88px;
+    border-radius:22px;
+    object-fit:fill;
+    border:3px solid rgba(255,255,255,.95);
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+    background:#fff;
+  }
+  .bookIntroText{ font-size:9.4pt; line-height:1.34; font-weight:900; color:#222; }
+  .bookHeroRow{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+  .miniRuleBtn{
+    border:2px solid rgba(0,0,0,.10);
+    border-radius:20px;
+    padding:12px;
+    background:#fff;
+    cursor:pointer;
+    text-align:center;
+    font-weight:900;
+    box-shadow:0 8px 16px rgba(0,0,0,.08);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .miniRuleBtn:hover{ transform:translateY(-2px); box-shadow:0 12px 22px rgba(0,0,0,.10); }
+  .miniRuleBtn span{ display:block; font-size:11pt; }
+  .miniRuleBtn small{ display:block; margin-top:5px; font-size:8.8pt; opacity:.95; }
+  .miniRuleBlue{ background:linear-gradient(180deg, #eef8ff, #cfeeff); }
+  .miniRulePink{ background:linear-gradient(180deg, #fff1f8, #ffd9ea); }
+  .miniRuleYellow{ background:linear-gradient(180deg, #fff9db, #ffe98f); }
+  .miniRuleGreen{ background:linear-gradient(180deg, #edfff0, #d1ffd8); }
+  .rulePosterGrid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .rulePoster{
+    border-radius:20px;
+    padding:12px;
+    border:2px solid rgba(0,0,0,.10);
+    background:#fff;
+    box-shadow:0 8px 16px rgba(0,0,0,.06);
+  }
+  .softMasc{ background:linear-gradient(180deg, #eef8ff, #deefff); }
+  .softFem{ background:linear-gradient(180deg, #fff1f8, #ffe6f3); }
+  .softFem2{ background:linear-gradient(180deg, #fff7ef, #ffe9cc); }
+  .softNumber{ background:linear-gradient(180deg, #f5fff3, #dbffd7); }
+  .rulePosterTitle{ text-align:center; font-weight:900; font-size:10pt; margin-bottom:8px; color:#111; }
+  .rulePoster ul{ margin:0; padding-left:16px; font-size:9.15pt; line-height:1.3; font-weight:900; }
+  .rulePoster li{ margin:5px 0; }
+  .numberFlow{ margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .flowCard{
+    border:2px solid rgba(0,0,0,.10);
+    border-radius:20px;
+    padding:12px;
+    background:linear-gradient(180deg, #ffffff, #f8fcff);
+    box-shadow:0 8px 16px rgba(0,0,0,.06);
+  }
+  .flowTitle{ text-align:center; font-weight:900; font-size:10pt; margin-bottom:8px; color:#4a148c; }
+  .flowRows{ display:grid; gap:8px; }
+  .flowRow{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:8px;
+    align-items:center;
+    padding:8px;
+    border-radius:14px;
+    background:rgba(58,160,230,.08);
+    font-weight:900;
+    font-size:9.2pt;
+  }
+  .flowArrow{ padding:3px 8px; border-radius:999px; background:#fff; border:2px solid rgba(0,0,0,.10); }
+  .wordTiles{ display:grid; gap:8px; margin-top:10px; }
+  .wordTiles.fourCols,.wordTiles.twoCols{ grid-template-columns:repeat(2,1fr); }
+  .wordTile{
+    min-height:58px;
+    border:2px solid rgba(0,0,0,.10);
+    border-radius:18px;
+    background:linear-gradient(180deg,#ffffff,#f6fbff);
+    cursor:pointer;
+    font-weight:900;
+    font-size:9.8pt;
+    color:#111;
+    box-shadow:0 6px 14px rgba(0,0,0,.08);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .wordTile:hover{ transform:translateY(-2px); box-shadow:0 10px 18px rgba(0,0,0,.10); }
+  .bookInfoBox{
+    margin-top:10px;
+    padding:12px;
+    border-radius:18px;
+    background:rgba(58,160,230,.08);
+    border:2px dashed rgba(0,0,0,.14);
+    font-size:9.2pt;
+    line-height:1.32;
+    font-weight:900;
+    color:#111;
+  }
+  .bookInfoBox.warm{ background:rgba(244,197,66,.18); }
+  .bookImageFrame{
+    margin-top:10px;
+    border-radius:20px;
+    overflow:hidden;
+    border:2px solid rgba(0,0,0,.12);
+    box-shadow:0 10px 18px rgba(0,0,0,.08);
+    background:#fff;
+    aspect-ratio:16 / 11;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .bookImageFrame img{ width:100%; height:100%; object-fit:fill; display:block; background:#fff; }
+  .bookNav{ margin-top:12px; display:grid; grid-template-columns:auto 1fr auto; gap:8px; align-items:center; }
+  .bookDots{ display:flex; justify-content:center; gap:6px; flex-wrap:wrap; }
+  .bookDot{ width:13px; height:13px; border-radius:999px; background:rgba(0,0,0,.18); border:2px solid rgba(255,255,255,.75); box-shadow:0 2px 6px rgba(0,0,0,.10); cursor:pointer; }
+  .bookDot.on{ background:var(--blue); }
+  /* =========================================================
+     [FIM] 4) PÁGINA 1 — MINI-LIVRO
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 5) PÁGINA 1 — LABIRINTO
+  ========================================================== */
+  .mazeShell{
+    margin-top:8px;
+    border:3px solid rgba(74,20,140,.22);
+    border-radius:26px;
+    padding:12px;
+    background:
+      radial-gradient(circle at 10% 8%, rgba(255,216,239,.80), transparent 28%),
+      radial-gradient(circle at 90% 12%, rgba(207,239,255,.85), transparent 30%),
+      linear-gradient(135deg, rgba(255,255,255,.98), rgba(245,241,255,.94));
+    box-shadow:0 12px 26px rgba(0,0,0,.14), inset 0 0 0 3px rgba(255,255,255,.72);
+  }
+  .mazeHeaderRow{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:8px;
+    margin-bottom:10px;
+  }
+  .mazeStart,.mazeGoal,.mazeCenterBadge{
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+    font-size:11pt;
+    border-radius:999px;
+    padding:7px 10px;
+    border:2px solid rgba(0,0,0,.18);
+    background:#fff;
+    box-shadow:0 5px 12px rgba(0,0,0,.08);
+    text-align:center;
+  }
+  .mazeStart{ color:#7a4b00; background:linear-gradient(180deg,#fff7d8,#ffe69a); }
+  .mazeGoal{ color:#b01257; background:linear-gradient(180deg,#ffe7f2,#ffc8e0); }
+  .mazeCenterBadge{ color:#15416b; background:linear-gradient(180deg,#eef8ff,#d7efff); font-size:9.3pt; }
+  .mazeBoard{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:6px;
+    background:
+      linear-gradient(90deg, rgba(58,160,230,.06) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(155,89,182,.06) 1px, transparent 1px),
+      #ffffff;
+    background-size:20% 12.5%;
+    border-radius:22px;
+    padding:10px;
+    border:3px solid rgba(0,0,0,.14);
+    box-shadow:inset 0 0 0 3px rgba(58,160,230,.05);
+  }
+  .mazeCell{
+    position:relative;
+    min-height:50px;
+    border:2px solid rgba(17,17,17,.82);
+    border-radius:14px;
+    background:linear-gradient(180deg,#ffffff,#f6fbff);
+    font-weight:900;
+    font-size:8.7pt;
+    color:#111;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    padding:6px 5px;
+    box-shadow:0 4px 8px rgba(0,0,0,.06);
+  }
+  .mazeCell::before{
+    content:attr(data-clue);
+    position:absolute;
+    top:-7px;
+    right:-5px;
+    width:18px;
+    height:18px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:8pt;
+    background:#fff;
+    border:2px solid rgba(0,0,0,.18);
+    box-shadow:0 2px 5px rgba(0,0,0,.10);
+  }
+  .mazeCell:hover{ transform:translateY(-2px) scale(1.015); box-shadow:0 8px 16px rgba(0,0,0,.13); }
+  .mazeCell.selected{
+    background:linear-gradient(180deg, #d8ffd8, #8be77f);
+    border-color:#137333;
+    box-shadow:0 0 0 3px rgba(46,204,113,.18), 0 8px 16px rgba(0,0,0,.12);
+  }
+  .mazeCell.selected::after{
+    content:attr(data-step);
+    position:absolute;
+    left:5px;
+    bottom:4px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#137333;
+    color:#fff;
+    font-size:8pt;
+    border:2px solid #fff;
+  }
+  .mazeCell.startCell{ background:linear-gradient(180deg, #fff7d8, #ffe89a); }
+  .mazeCell.goalCell{ background:linear-gradient(180deg, #ffe0ee, #ffc2dd); }
+  .mazeCell.wrong{ background:linear-gradient(180deg, #ffe1ea, #ffc5d7); border-color:#d94b3a; color:#9c1c3f; animation:mazeShake .25s ease 2; }
+  .mazeCell.locked{ opacity:.96; }
+  .mazeInfoPanel{ margin-top:10px; border-radius:20px; padding:10px; background:rgba(255,255,255,.88); border:2px dashed rgba(74,20,140,.24); }
+  .mazeBadgeRow{ display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin-bottom:8px; }
+  .mazeBadge{ padding:4px 10px; border-radius:999px; background:linear-gradient(180deg, #ffffff, #eef8ff); border:2px solid rgba(0,0,0,.10); font-weight:900; font-size:8.3pt; }
+  @keyframes mazeShake{
+    0%{ transform:translateX(0); }
+    25%{ transform:translateX(-3px); }
+    50%{ transform:translateX(3px); }
+    75%{ transform:translateX(-2px); }
+    100%{ transform:translateX(0); }
+  }
+  @keyframes fadeBook{
+    from{ opacity:.45; transform:translateX(8px); }
+    to{ opacity:1; transform:translateX(0); }
+  }
+  /* =========================================================
+     [FIM] 5) PÁGINA 1 — LABIRINTO
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 6) PÁGINA 2 — DUCK HUNT
+  ========================================================== */
+.duckPageCard{
+  padding:14px;
+}
+.duckWrap{
+  margin-top:8px;
+  border:3px solid rgba(0,0,0,.12);
+  border-radius:26px;
+  background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(246,249,255,.96));
+  padding:12px;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.7);
+}
+.duckTopHud{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-bottom:10px;
+}
+.duckHudBox{
+  min-height:42px;
+  border-radius:16px;
+  border:2px solid rgba(0,0,0,.18);
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:900;
+  font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+  font-size:10pt;
+  padding:4px 8px;
+}
+.duckGame{
+  position:relative;
+  width:100%;
+  height:520px;
+  overflow:hidden;
+  border-radius:22px;
+  border:3px solid rgba(0,0,0,.18);
+  background:#78b9ff;
+  cursor:none;
+  user-select:none;
+}
+.duckSceneBg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  pointer-events:none;
+}
+.duckFloatingBush{
+  position:absolute;
+  width:250px;
+  height:auto;
+  pointer-events:none;
+  z-index:3;
+  filter:drop-shadow(0 5px 4px rgba(0,0,0,.20));
+}
+.duckBalloon{
+  position:absolute;
+  width:190px;
+  height:230px;
+  border:none;
+  background:transparent;
+  padding:0;
+  margin:0;
+  transform:translate(-50%,-50%);
+  cursor:none;
+  z-index:5;
+  display:none;
+}
+.duckBalloonBody{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:150px;
+  height:175px;
+  border-radius:50% 50% 46% 46%;
+  background:linear-gradient(180deg, #ff6b81, #e84362);
+  border:4px solid rgba(0,0,0,.24);
+  box-shadow:
+    inset -8px -12px 0 rgba(255,255,255,.14),
+    0 8px 14px rgba(0,0,0,.18);
+}
+.duckBalloonBody::after{
+  content:"";
+  position:absolute;
+  bottom:-16px;
+  left:50%;
+  transform:translateX(-50%);
+  width:18px;
+  height:18px;
+  background:#e84362;
+  border-left:4px solid rgba(0,0,0,.24);
+  border-right:4px solid rgba(0,0,0,.24);
+  border-bottom:4px solid rgba(0,0,0,.24);
+  clip-path:polygon(50% 100%, 0 0, 100% 0);
+}
+.duckBalloonString{
+  position:absolute;
+  left:50%;
+  top:178px;
+  width:3px;
+  height:42px;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.45);
+  border-radius:99px;
+}
+.duckBalloonLabel{
+  position:absolute;
+  top:48px;
+  left:50%;
+  transform:translateX(-50%);
+  width:118px;
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8px 10px;
+  border-radius:18px;
+  background:rgba(255,255,255,.95);
+  border:3px solid rgba(0,0,0,.14);
+  color:#111;
+  font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+  font-weight:900;
+  font-size:16pt;
+  line-height:1.05;
+  pointer-events:none;
+}
+.duckBalloon.pop .duckBalloonBody,
+.duckBalloon.pop .duckBalloonLabel,
+.duckBalloon.pop .duckBalloonString{
+  animation:duckBalloonPop .28s ease-out forwards;
+}
+@keyframes duckBalloonPop{
+  0%{ opacity:1; }
+  100%{ opacity:0; transform:scale(1.22); }
+}
+.duckCrosshair{
+  position:absolute;
+  width:68px;
+  height:68px;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:9;
+  display:none;
+}
+.duckCrosshair img{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.duckDogStage{
+  position:absolute;
+  left:50%;
+  bottom:22px;
+  transform:translateX(-50%);
+  z-index:7;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  pointer-events:none;
+}
+.duckDogStage img{
+  width:180px;
+  height:auto;
+  display:none;
+  filter:drop-shadow(0 6px 4px rgba(0,0,0,.18));
+}
+.duckDogBubble{
+  min-height:34px;
+  padding:7px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.95);
+  border:2px solid rgba(0,0,0,.18);
+  font-size:10pt;
+  font-weight:900;
+  font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+  opacity:0;
+  transform:translateY(4px);
+  transition:all .18s ease;
+  white-space:nowrap;
+}
+.duckDogBubble.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.duckBottomPanel{
+  margin-top:10px;
+  border:2px dashed rgba(0,0,0,.16);
+  border-radius:18px;
+  background:rgba(255,255,255,.82);
+  padding:10px;
+}
+
+/* Ajuste pontual: mais balões coloridos por rodada */
+.duckBalloon{
+  width:132px;
+  height:174px;
+}
+.duckBalloonBody{
+  width:104px;
+  height:124px;
+  background:var(--balloonGrad, linear-gradient(180deg, #ff6b81, #e84362));
+}
+.duckBalloonBody::after{
+  background:var(--balloonKnot, #e84362);
+}
+.duckBalloonString{
+  top:128px;
+  height:34px;
+}
+.duckBalloonLabel{
+  top:32px;
+  width:86px;
+  min-height:48px;
+  font-size:11.5pt;
+  border-radius:14px;
+  padding:5px 7px;
+}
+@media (max-width: 760px){
+  .duckBalloon{ width:110px; height:150px; }
+  .duckBalloonBody{ width:86px; height:108px; }
+  .duckBalloonString{ top:111px; height:28px; }
+  .duckBalloonLabel{ width:72px; min-height:42px; font-size:9.5pt; top:28px; }
+}
+  /* =========================================================
+     [FIM] 6) PÁGINA 2 — DUCK HUNT
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 7) PÁGINA 3 — CLASIFICA + MEMÓRIA
+  ========================================================== */
+  .ddStage{ margin-top:8px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .bucket{ border:3px solid rgba(0,0,0,.25); border-radius:14px; padding:10px; background:rgba(58,160,230,.06); min-height:120px; }
+  .bucketTitle{ text-align:center; margin-bottom:8px; }
+  .bucketHint{ margin-top:8px; font-size:9pt; text-align:center; opacity:.85; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:8px; border-radius:14px; border:2px dashed rgba(0,0,0,.20); background:rgba(255,255,255,.70); min-height:90px; }
+  .chip{ padding:10px 12px; border-radius:999px; border:2px solid rgba(0,0,0,.40); background:#fff; cursor:grab; user-select:none; touch-action:none; }
+  .chip.ok{ border-color:rgba(46,204,113,.75); background:rgba(46,204,113,.10); }
+  .memoryBoard{ margin-top:8px; display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .memoryCard{
+    min-height:58px;
+    border:2px solid rgba(0,0,0,.28);
+    border-radius:14px;
+    background:linear-gradient(#fff, rgba(255,255,255,.88));
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:8px;
+    font-size:9.2pt;
+    user-select:none;
+  }
+  .memoryCard.flipped{ outline:3px solid rgba(58,160,230,.38); }
+  .memoryCard.done{ background:rgba(46,204,113,.12); border-color:rgba(46,204,113,.75); }
+  /* =========================================================
+     [FIM] 7) PÁGINA 3 — CLASIFICA + MEMÓRIA
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 8) PÁGINA 4 — ESCAPE ROOM
+  ========================================================== */
+  .escapeTop{ display:grid; grid-template-columns:1.05fr .95fr; gap:10px; margin-top:8px; }
+  .escapePanel{ background:#fff; border:2px dotted var(--violet); border-radius:14px; padding:10px; }
+  .missionBox{ border:2px dashed rgba(0,0,0,.18); border-radius:14px; padding:10px; background:rgba(58,160,230,.06); font-size:9.2pt; line-height:1.3; }
+  .escapeQuestion{ margin-top:8px; border:2px solid rgba(0,0,0,.14); border-radius:14px; padding:10px; background:#fff; }
+  .escapeQuestion h4{ margin:0 0 8px 0; font-size:10pt; color:#111; }
+  .escapeChoices{ display:flex; flex-wrap:wrap; gap:8px; }
+  .escapeChoice{ min-height:34px; padding:7px 12px; border-radius:999px; border:2px solid rgba(0,0,0,.35); background:#fff; cursor:pointer; }
+  .escapeChoice.good{ border-color:rgba(46,204,113,.8); background:rgba(46,204,113,.10); }
+  .escapeChoice.bad{ border-color:rgba(217,75,58,.8); background:rgba(217,75,58,.08); }
+  .keySlots{ display:flex; gap:10px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
+  .keySlot{ width:64px; height:64px; border-radius:16px; border:3px dashed rgba(0,0,0,.24); display:flex; align-items:center; justify-content:center; font-size:20pt; background:#fff; }
+  .keySlot.on{ border-style:solid; border-color:var(--green); background:rgba(46,204,113,.10); }
+  .codePanel{ margin-top:12px; display:grid; gap:10px; }
+  .codeDisplay{ text-align:center; font-size:11pt; background:rgba(58,160,230,.08); border:2px dashed rgba(0,0,0,.20); border-radius:14px; padding:10px; }
+  .codeRow{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .codeInput{ width:260px; height:42px; border:2px solid rgba(0,0,0,.35); border-radius:12px; text-align:center; text-transform:uppercase; letter-spacing:2px; outline:none; }
+  .unlockBox{ display:none; margin-top:10px; border:2px solid rgba(46,204,113,.55); background:rgba(46,204,113,.12); border-radius:14px; padding:12px; text-align:center; }
+
+  /* AJUSTE PONTUAL — PÁGINA 4 COM 20 PERGUNTAS */
+  .escapeTop20{
+    grid-template-columns:1.35fr .65fr;
+    align-items:start;
+  }
+  .escapeQuestionsPanel{
+    max-height:1060px;
+    overflow:auto;
+    padding-right:8px;
+  }
+  .escapeQuestionsPanel .missionBox{
+    margin-bottom:8px;
+  }
+  .escapeQuestionsPanel .escapeQuestion{
+    margin-top:6px;
+    padding:7px;
+  }
+  .escapeQuestionsPanel .escapeQuestion h4{
+    font-size:8.6pt;
+    margin-bottom:5px;
+    line-height:1.18;
+  }
+  .escapeQuestionsPanel .escapeChoices{
+    gap:5px;
+  }
+  .escapeQuestionsPanel .escapeChoice{
+    min-height:28px;
+    padding:4px 8px;
+    font-size:8.2pt;
+  }
+  .keySlots20{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:6px;
+  }
+  .keySlots20 .keySlot{
+    width:auto;
+    height:42px;
+    min-width:0;
+    border-radius:12px;
+    font-size:13pt;
+  }
+  .escapeKeysPanel{
+    position:sticky;
+    top:8px;
+  }
+  @media (max-width:1100px){
+    .escapeTop20{
+      grid-template-columns:1fr;
+    }
+    .escapeQuestionsPanel{
+      max-height:none;
+      overflow:visible;
+    }
+    .escapeKeysPanel{
+      position:relative;
+      top:auto;
+    }
+  }
+  @media (max-width:640px){
+    .keySlots20{
+      grid-template-columns:repeat(4, 1fr);
+    }
+    .escapeQuestionsPanel .escapeChoice{
+      width:100%;
+    }
+  }
+
+
+  /* AJUSTE PONTUAL — BLOQUEIO DA PÁGINA 4 ATÉ CONCLUIR P1, P2 E P3 */
+  #page4{
+    position:relative;
+  }
+  #page4.page4Locked .content{
+    filter:grayscale(.25) blur(.7px);
+    pointer-events:none;
+    user-select:none;
+  }
+  .page4LockOverlay{
+    position:absolute;
+    inset:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18mm;
+    background:rgba(0,0,0,.38);
+    backdrop-filter:blur(2px);
+  }
+  #page4:not(.page4Locked) .page4LockOverlay{
+    display:none;
+  }
+  .page4LockBox{
+    width:min(650px, 92%);
+    border:6px solid var(--blue);
+    border-radius:24px;
+    background:linear-gradient(180deg,#ffffff,#eef8ff);
+    box-shadow:0 18px 45px rgba(0,0,0,.28);
+    padding:24px;
+    text-align:center;
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+  }
+  .page4LockIcon{
+    font-size:42pt;
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .page4LockTitle{
+    color:#4a148c;
+    font-size:18pt;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .page4LockText{
+    font-size:12pt;
+    color:#111;
+    margin-bottom:14px;
+  }
+  .page4LockChecklist{
+    display:grid;
+    gap:8px;
+    text-align:left;
+    width:min(420px,100%);
+    margin:0 auto;
+  }
+  .page4LockChecklist div{
+    border:2px dashed rgba(0,0,0,.22);
+    border-radius:12px;
+    background:#fff;
+    padding:8px 12px;
+    font-size:10.5pt;
+  }
+  @media (max-width:640px){
+    .page4LockOverlay{ padding:18px; align-items:flex-start; padding-top:120px; }
+    .page4LockBox{ padding:16px; }
+    .page4LockTitle{ font-size:14pt; }
+    .page4LockText{ font-size:10.5pt; }
+  }
+
+  /* =========================================================
+     [FIM] 8) PÁGINA 4 — ESCAPE ROOM
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 9) OVERLAYS
+  ========================================================== */
+  #infoOverlay,#certOverlay{ position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; z-index:9998; padding:18px; }
+  #infoCard,#certCard{ width:min(980px, 96vw); max-height:min(86vh, 860px); overflow:hidden; background:var(--paper); border:6px solid var(--blue); border-radius:18px; box-shadow:0 18px 55px rgba(0,0,0,.35); padding:16px; }
+  #infoInner,#certInner{ background:#fff; border:3px dotted var(--violet); border-radius:14px; padding:16px; max-height:calc(min(86vh, 860px) - 44px); overflow:auto; -webkit-overflow-scrolling:touch; }
+  #infoTitle,#certTitle{ color:var(--violet); letter-spacing:.6px; text-transform:uppercase; font-size:13pt; margin:0 0 10px 0; text-align:center; }
+  #infoES{ font-size:16pt; color:#111; margin:0 0 8px 0; text-align:center; }
+  #infoPT{ font-size:11pt; color:#111; margin:0 0 10px 0; opacity:.92; text-align:center; }
+  #infoRule{ background:rgba(58,160,230,.08); border:2px dashed rgba(0,0,0,.20); border-radius:14px; padding:10px; margin:10px 0 0 0; line-height:1.35; }
+  #infoExample{ font-size:10.5pt; color:#111; margin:10px 0 0 0; text-align:center; line-height:1.35; }
+  #infoBtns,#certBtns{ margin-top:14px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .overlayBtn,.certBtn{ height:40px; padding:0 18px; border-radius:999px; border:2px solid rgba(0,0,0,.45); background:#fff; cursor:pointer; }
+  .overlayBtnPrimary,.certBtnPrimary{ background:var(--blue); color:#fff; border-color:transparent; }
+  #certSub,#certName,#certMeta{ text-align:center; color:#111; }
+  #certName{ font-size:16pt; margin:8px 0; }
+  #certMeta{ line-height:1.35; }
+
+
+  /* AJUSTE PONTUAL — CERTIFICADO ANTIFRAUDE */
+  #openCertificateBtn:disabled,
+  .certBtn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    filter:grayscale(1);
+  }
+  #certAntiCode{
+    color:#b01257;
+    letter-spacing:1px;
+    font-size:12pt;
+  }
+  #certWatermark{
+    margin-top:14px;
+    padding:10px;
+    border:2px dashed rgba(176,18,87,.45);
+    border-radius:14px;
+    background:rgba(255,216,239,.35);
+    color:#4a148c;
+    text-align:center;
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+    font-size:10pt;
+  }
+
+  /* REFORÇO ANTIFRAUDE — certificado com marca d'água vinculada ao aluno */
+  #certInner{
+    position:relative;
+    overflow:hidden;
+  }
+  #certInner > *{
+    position:relative;
+    z-index:2;
+  }
+  #certWatermarkCloud{
+    position:absolute;
+    inset:-40px;
+    z-index:1;
+    pointer-events:none;
+    opacity:.105;
+    transform:rotate(-18deg);
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:14px;
+    align-content:center;
+  }
+  .certWmItem{
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+    font-size:10pt;
+    line-height:1.2;
+    color:#111;
+    border:2px solid rgba(176,18,87,.55);
+    border-radius:12px;
+    padding:10px;
+    text-align:center;
+    background:rgba(255,255,255,.30);
+    white-space:normal;
+  }
+  #certValidationBox{
+    margin-top:10px;
+    padding:10px;
+    border:3px solid rgba(17,115,51,.55);
+    border-radius:16px;
+    background:rgba(216,255,216,.45);
+    color:#0b5d2a;
+    text-align:center;
+    font-family:'Comic Sans MS','Trebuchet MS',Verdana,sans-serif;
+    font-weight:900;
+    font-size:9.5pt;
+    line-height:1.35;
+  }
+  #certFingerprint{
+    display:inline-block;
+    margin-top:6px;
+    padding:4px 10px;
+    border-radius:999px;
+    background:#fff;
+    border:2px dashed rgba(0,0,0,.28);
+    color:#4a148c;
+    letter-spacing:.5px;
+  }
+  .certTamperNotice{
+    margin-top:8px;
+    font-size:8.8pt;
+    color:#7c1d1d;
+    font-weight:900;
+  }
+  @media print{
+    #certWatermarkCloud{ opacity:.16; }
+    #certBtns{ display:none !important; }
+  }
+
+  /* =========================================================
+     [FIM] 9) OVERLAYS
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 10) RESPONSIVIDADE
+  ========================================================== */
+  @media (max-width:1100px){
+    .page{ width:min(297mm, calc(100vw - 20px)); height:auto; min-height:320mm; overflow:visible; }
+    .content{ position:relative; left:auto; right:auto; top:auto; bottom:auto; padding:16mm 18mm 18mm 18mm; }
+    .escapeTop,.ddStage,.cols,.infoGrid,.rulePosterGrid,.bookHeroRow{ grid-template-columns:1fr; }
+    .memoryBoard{ grid-template-columns:repeat(2,1fr); }
+    .wordTiles.fourCols,.wordTiles.twoCols{ grid-template-columns:1fr; }
+    .duckTopHud{ grid-template-columns:1fr; }
+    .titleRow{ grid-template-columns:1fr; }
+    .bncc{ text-align:center; }
+  }
+  @media print{
+    *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body{ background:#fff; padding:0; }
+    #studentRegister,.controls{ display:none !important; }
+    .wrap{ display:block !important; }
+    .page{ box-shadow:none !important; margin:0 auto 0 auto; break-after:page; }
+    @page{ size:A4 landscape; margin:0; }
+  }
+  /* =========================================================
+     [FIM] 10) RESPONSIVIDADE
+  ========================================================== */
+/* =========================================================
+   [INÍCIO] CSS — PÁGINA 3 TETRIS
+========================================================== */
+.page-3{
+  background: linear-gradient(180deg, #f3f4df 0%, #ecefd3 100%);
+  overflow: hidden;
+}
+
+.p3-tetris-shell{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:12px;
+  box-sizing:border-box;
+}
+
+.p3-topbar{
+  display:grid;
+  grid-template-columns: 1fr 190px;
+  gap:10px;
+  align-items:stretch;
+}
+
+.p3-title-wrap,
+.p3-goal-box,
+.p3-card,
+.p3-game-card{
+  background:#ffffffea;
+  border:2px solid #222;
+  border-radius:16px;
+  box-shadow:0 3px 0 rgba(0,0,0,.08);
+}
+
+.p3-title-wrap{
+  padding:12px 14px;
+}
+
+.p3-kicker{
+  font-size:11px;
+  font-weight:800;
+  color:#6b7280;
+  letter-spacing:.08em;
+  margin-bottom:3px;
+}
+
+.p3-title{
+  margin:0;
+  font-size:22px;
+  line-height:1.1;
+  color:#0f172a;
+}
+
+.p3-subtitle{
+  margin:6px 0 0;
+  font-size:13px;
+  color:#334155;
+  line-height:1.35;
+}
+
+.p3-goal-box{
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.p3-goal-label{
+  font-size:12px;
+  font-weight:800;
+  color:#64748b;
+  text-transform:uppercase;
+}
+
+.p3-goal-value{
+  font-size:40px;
+  line-height:1;
+  font-weight:900;
+  color:#0ea5e9;
+  margin:4px 0;
+}
+
+.p3-goal-mini{
+  font-size:11px;
+  color:#475569;
+  line-height:1.25;
+}
+
+.p3-tetris-layout{
+  flex:1;
+  min-height:0;
+  display:flex;
+}
+
+.p3-tetris-column{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  width:100%;
+  min-height:0;
+}
+
+.p3-info-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap:10px;
+}
+
+.p3-card{
+  padding:10px 12px;
+}
+
+.p3-label{
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  color:#64748b;
+  margin-bottom:4px;
+  letter-spacing:.05em;
+}
+
+.p3-big{
+  font-size:26px;
+  font-weight:900;
+  line-height:1;
+}
+
+.p3-score{ color:#f59e0b; }
+.p3-level{ color:#10b981; }
+
+.p3-progress-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.p3-progress-bar{
+  width:100%;
+  height:14px;
+  background:#dbe4ea;
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid #94a3b8;
+}
+
+.p3-progress-fill{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg, #22d3ee, #0ea5e9);
+  transition:width .2s ease;
+}
+
+.p3-progress-text{
+  margin-top:6px;
+  font-size:12px;
+  font-weight:700;
+  color:#334155;
+}
+
+.p3-learning-wrap{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap:10px;
+}
+
+.p3-mission{
+  font-size:18px;
+  line-height:1.2;
+  font-weight:900;
+  color:#0ea5e9;
+}
+
+.p3-current-word{
+  font-size:28px;
+  line-height:1;
+  font-weight:900;
+  color:#db2777;
+}
+
+.p3-current-type{
+  margin-top:4px;
+  font-size:12px;
+  font-style:italic;
+  color:#475569;
+}
+
+.p3-pair{
+  margin-top:6px;
+  font-size:13px;
+  font-weight:700;
+  color:#0369a1;
+}
+
+.p3-feedback{
+  font-size:13px;
+  line-height:1.35;
+  color:#0f172a;
+  font-weight:700;
+}
+
+.p3-example{
+  margin-top:8px;
+  font-size:13px;
+  color:#334155;
+}
+
+.p3-example span:first-child{
+  color:#db2777;
+  font-weight:800;
+}
+
+.p3-example span:last-child{
+  color:#0ea5e9;
+  font-weight:800;
+}
+
+.p3-game-card{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  padding:10px;
+  gap:10px;
+}
+
+/* AJUSTE PONTUAL — CANVAS + PAINEL LATERAL VISÍVEL */
+.p3-game-stage{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(270px, 1fr) minmax(230px, 320px);
+  gap:10px;
+  align-items:stretch;
+}
+
+.p3-canvas-wrap{
+  position:relative;
+  min-height:250px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px;
+  background:#e6edf3;
+  border:2px dashed #94a3b8;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+#tetrisCanvas{
+  display:block;
+  width:min(100%, 288px);
+  height:auto;
+  max-height:100%;
+  background:#172033;
+  border:4px solid #334155;
+  border-radius:16px;
+  image-rendering:pixelated;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+  touch-action:manipulation;
+}
+
+.p3-side-panel{
+  min-height:250px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.p3-side-card{
+  flex:1;
+  min-height:0;
+  border:2px solid #111827;
+  border-radius:18px;
+  background:linear-gradient(180deg,#ffffff,#eef8ff);
+  box-shadow:0 5px 14px rgba(0,0,0,.10);
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.p3-side-title{
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#475569;
+  margin-bottom:8px;
+  text-align:center;
+}
+
+.p3-word-badge{
+  border:3px solid rgba(15,23,42,.85);
+  border-radius:18px;
+  padding:12px 8px;
+  text-align:center;
+  background:#fff;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.7);
+}
+
+.p3-current-word{
+  font-size:32px;
+  line-height:1.05;
+  font-weight:900;
+  color:#db2777;
+  overflow-wrap:anywhere;
+}
+
+.p3-current-type{
+  margin-top:6px;
+  font-size:13px;
+  font-weight:900;
+  color:#475569;
+}
+
+.p3-pair{
+  margin-top:10px;
+  font-size:17px;
+  line-height:1.25;
+  font-weight:900;
+  color:#0369a1;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+
+.p3-side-rule{
+  margin-top:10px;
+  padding:9px;
+  border-radius:14px;
+  background:#fff7ed;
+  border:2px dashed #f97316;
+  font-size:12px;
+  line-height:1.3;
+  font-weight:800;
+  color:#7c2d12;
+}
+
+.p3-overlay{
+  position:absolute;
+  inset:8px;
+  background:rgba(0,0,0,.72);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  z-index:5;
+}
+
+.p3-overlay.hidden{
+  display:none;
+}
+
+.p3-overlay-box{
+  background:#fff;
+  color:#0f172a;
+  border-radius:16px;
+  padding:18px;
+  max-width:260px;
+  width:100%;
+  text-align:center;
+  border:2px solid #111827;
+}
+
+.p3-overlay-box h3{
+  margin:0 0 8px;
+  font-size:24px;
+}
+
+.p3-overlay-box p{
+  margin:0 0 12px;
+  font-size:14px;
+  line-height:1.35;
+}
+
+.p3-btn{
+  border:none;
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.p3-btn-primary{
+  background:#0ea5e9;
+  color:#fff;
+}
+
+.p3-touch-controls{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:8px;
+}
+
+.p3-touch-btn{
+  min-height:50px;
+  border:none;
+  border-radius:14px;
+  background:#1e293b;
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+  border:2px solid #475569;
+  cursor:pointer;
+}
+
+.p3-touch-btn-wide{
+  grid-column:1 / -1;
+  font-size:18px;
+}
+
+.p3-help{
+  border:1px dashed #94a3b8;
+  border-radius:14px;
+  padding:8px 10px;
+  background:#f8fafc;
+}
+
+.p3-help-title{
+  font-size:12px;
+  font-weight:800;
+  color:#475569;
+  margin-bottom:4px;
+  text-transform:uppercase;
+}
+
+.p3-help-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:4px 10px;
+  font-size:12px;
+  color:#334155;
+}
+
+/* ========= RESPONSIVO / SEM CORTE ========= */
+@media (max-width: 980px){
+  .p3-topbar{
+    grid-template-columns:1fr;
+  }
+
+  .p3-info-grid,
+  .p3-learning-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .p3-game-card{
+    min-height:unset;
+  }
+
+  .p3-canvas-wrap{
+    min-height:420px;
+  }
+}
+
+@media (max-width: 640px){
+  .p3-tetris-shell{
+    padding:8px;
+    gap:8px;
+  }
+
+  .p3-title{
+    font-size:18px;
+  }
+
+  .p3-subtitle{
+    font-size:12px;
+  }
+
+  .p3-big{
+    font-size:22px;
+  }
+
+  .p3-current-word{
+    font-size:24px;
+  }
+
+  .p3-mission{
+    font-size:16px;
+  }
+
+  .p3-canvas-wrap{
+    min-height:360px;
+    padding:6px;
+  }
+
+  #tetrisCanvas{
+    width:min(100%, 260px);
+  }
+
+  .p3-touch-btn{
+    min-height:46px;
+    font-size:20px;
+  }
+
+  .p3-help-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* AJUSTE PONTUAL — RESPONSIVO REAL PARA CELULAR, TABLET E PC */
+@media (max-width: 900px){
+  .p3-game-stage{
+    grid-template-columns:1fr;
+  }
+
+  .p3-side-panel{
+    min-height:unset;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .p3-canvas-wrap{
+    min-height:520px;
+  }
+}
+
+@media (max-width: 640px){
+  .p3-info-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .p3-progress-card{
+    grid-column:1 / -1;
+  }
+
+  .p3-game-stage{
+    gap:8px;
+  }
+
+  .p3-side-panel{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .p3-side-card{
+    padding:9px;
+  }
+
+  .p3-current-word{
+    font-size:24px;
+  }
+
+  .p3-pair{
+    font-size:14px;
+  }
+
+  .p3-side-rule{
+    font-size:11px;
+  }
+
+  .p3-canvas-wrap{
+    min-height:430px;
+    padding:5px;
+  }
+
+  #tetrisCanvas{
+    width:min(100%, 230px);
+  }
+}
+
+@media (max-width: 390px){
+  .p3-title{
+    font-size:16px;
+  }
+
+  .p3-topbar,
+  .p3-info-grid,
+  .p3-game-card{
+    gap:6px;
+  }
+
+  .p3-canvas-wrap{
+    min-height:390px;
+  }
+
+  #tetrisCanvas{
+    width:min(100%, 205px);
+  }
+
+  .p3-touch-btn{
+    min-height:42px;
+    font-size:18px;
+  }
+}
+
+/* =========================================================
+   [FIM] CSS — PÁGINA 3 TETRIS
+========================================================== */
+  </style>
+</head>
+<body>
+<!-- =========================================================
+       [INÍCIO] REGISTRO INICIAL
+  ========================================================== -->
+<section id="studentRegister">
+<div class="regTitle">Registro do Estudante — Aula 11 Premium</div>
+<div class="regRow">
+<label class="regLabel" for="studentName">Nome</label>
+<input class="regInput" id="studentName" placeholder="Digite o nome do estudante" type="text"/>
+</div>
+<div class="regRow">
+<label class="regLabel" for="studentSchool">Escola</label>
+<input class="regInput" id="studentSchool" placeholder="Digite o nome da escola" type="text"/>
+</div>
+<div class="regRow">
+<label class="regLabel" for="studentClass">Turma</label>
+<input class="regInput" id="studentClass" placeholder="Digite a turma" type="text"/>
+</div>
+<button class="regBtn" id="saveRegisterBtn">INICIAR A AULA 11</button>
+<div class="regHint">Tema: <b>Género y número de los sustantivos y adjetivos en español</b></div>
+</section>
+<!-- =========================================================
+       [FIM] REGISTRO INICIAL
+  ========================================================== -->
+<main class="wrap" id="mainWrap">
+<!-- =======================================================
+         PÁGINA 1 — CONTEÚDO / EXPLICAÇÃO
+    ======================================================== -->
+<section class="page" id="page1">
+<div class="content">
+<div class="titleRow">
+<div></div>
+<div class="centerTitle">AULA 11 PREMIUM • GÉNERO Y NÚMERO</div>
+<div class="bncc">BNCC: EM13LGG101 • EM13LGG103 • EM13LP02</div>
+</div>
+<div class="bars">
+<div class="bar"></div>
+<div style="width:16px"></div>
+<div class="bar"></div>
+</div>
+<div class="cols">
+<div class="card">
+<div class="cardTitle">1) LIBRO INTERACTIVO — GÉNERO Y NÚMERO DE LOS SUSTANTIVOS</div>
+<p class="hint">Visual escolar, mais cor, brilho, imagens e navegação tipo livrinho.</p>
+<div class="bookShell">
+<div class="bookTopBar">
+<span class="bookChip">🌈 Colorido</span>
+<span class="bookChip">📚 Escolar</span>
+<span class="bookChip">✨ Premium</span>
+</div>
+<div class="bookViewport">
+<article class="bookPage active" data-book-page="0">
+<div class="bookPageTitle">Página 1 • Género y número</div>
+<div class="bookIntroCard">
+<img alt="Sticker gênero e número" class="bookSticker" loading="lazy" src="sticker-genero-numero.png"/>
+<div class="bookIntroText">
+                      Os <b>sustantivos</b> em espanhol podem mudar de duas formas importantes:
+                      <br/>• pelo <b>género</b> → masculino / femenino
+                      <br/>• pelo <b>número</b> → singular / plural
+                    </div>
+</div>
+<div class="bookHeroRow">
+<button class="miniRuleBtn miniRuleBlue" data-es="Masculino y femenino" data-example="el niño • el perro • la casa • la ventana" data-pt="O gênero mostra se a palavra é masculina ou feminina." data-rule="Pista geral: muitas palavras em -o são masculinas e muitas em -a são femininas, mas existem exceções." data-title="GÉNERO">
+<span>🔵 GÉNERO</span>
+<small>masculino / femenino</small>
+</button>
+<button class="miniRuleBtn miniRuleGreen" data-es="Singular y plural" data-example="casa → casas • papel → papeles" data-pt="O número mostra se falamos de um ou de vários elementos." data-rule="Muitas palavras fazem plural com -s ou -es." data-title="NÚMERO">
+<span>🟢 NÚMERO</span>
+<small>singular / plural</small>
+</button>
+</div>
+<div class="rulePosterGrid">
+<div class="rulePoster softMasc">
+<div class="rulePosterTitle">GÉNERO</div>
+<ul>
+<li><b>el libro</b> → masculino</li>
+<li><b>la mesa</b> → femenino</li>
+<li><b>el profesor</b> → masculino</li>
+<li><b>la ciudad</b> → femenino</li>
+</ul>
+</div>
+<div class="rulePoster softNumber">
+<div class="rulePosterTitle">NÚMERO</div>
+<ul>
+<li><b>el perro</b> → singular</li>
+<li><b>los perros</b> → plural</li>
+<li><b>la canción</b> → singular</li>
+<li><b>las canciones</b> → plural</li>
+</ul>
+</div>
+</div>
+<div class="bookImageFrame">
+<img alt="Painel gênero e número" loading="lazy" src="painel-genero-numero-01.png"/>
+</div>
+</article>
+<article class="bookPage" data-book-page="1">
+<div class="bookPageTitle">Página 2 • Género de los sustantivos</div>
+<div class="bookHeroRow">
+<button class="miniRuleBtn miniRuleBlue" data-es="Masculino" data-example="el libro • el paisaje • el profesor" data-pt="Algumas terminações ajudam a descobrir se a palavra tende a ser masculina." data-rule="Terminações muito comuns: -o, -aje, -or." data-title="PISTAS DE GÉNERO">
+<span>👦 Masculino</span>
+<small>pistas frequentes</small>
+</button>
+<button class="miniRuleBtn miniRulePink" data-es="Femenino" data-example="la casa • la verdad • la canción • la voz" data-pt="Algumas terminações ajudam a descobrir se a palavra tende a ser feminina." data-rule="Terminações frequentes: -a, -dad, -ción, -sión, -z." data-title="PISTAS DE GÉNERO">
+<span>👧 Femenino</span>
+<small>pistas frequentes</small>
+</button>
+</div>
+<div class="wordTiles fourCols">
+<button class="wordTile" data-es="Palabras terminadas en -ma" data-example="el problema • el tema • el clima • el sistema" data-pt="Algumas palavras em -ma são masculinas." data-rule="Muitas têm origem grega." data-title="MASCULINO EN -MA">el problema</button>
+<button class="wordTile" data-es="Grupo en -aje" data-example="el paisaje • el viaje • el equipaje" data-pt="Palavras em -aje costumam ser masculinas." data-rule="É um grupo muito útil para memorizar." data-title="MASCULINO EN -AJE">el paisaje</button>
+<button class="wordTile" data-es="Grupo en -dad" data-example="la ciudad • la verdad • la libertad" data-pt="Palavras em -dad quase sempre são femininas." data-rule="É uma pista muito forte." data-title="FEMENINO EN -DAD">la verdad</button>
+<button class="wordTile" data-es="Grupo en -ción" data-example="la canción • la educación • la televisión" data-pt="Palavras em -ción e -sión costumam ser femininas." data-rule="Aparecem bastante no vocabulário escolar." data-title="FEMENINO EN -CIÓN">la canción</button>
+</div>
+<div class="bookImageFrame">
+<img alt="Painel masculino e feminino" loading="lazy" src="painel-genero-masculino-femenino.png"/>
+</div>
+</article>
+<article class="bookPage" data-book-page="2">
+<div class="bookPageTitle">Página 3 • Número de los sustantivos</div>
+<div class="bookIntroCard">
+<img alt="Sticker singular e plural" class="bookSticker" loading="lazy" src="sticker-singular-plural.png"/>
+<div class="bookIntroText">
+                      O número mostra se a palavra está no <b>singular</b> ou no <b>plural</b>. Em espanhol, o plural costuma ser formado com <b>-s</b> ou <b>-es</b>.
+                    </div>
+</div>
+<div class="numberFlow">
+<div class="flowCard">
+<div class="flowTitle">PLURAL COM -S</div>
+<div class="flowRows">
+<div class="flowRow"><span>casa</span><span class="flowArrow">→</span><span>casas</span></div>
+<div class="flowRow"><span>libro</span><span class="flowArrow">→</span><span>libros</span></div>
+<div class="flowRow"><span>mesa</span><span class="flowArrow">→</span><span>mesas</span></div>
+</div>
+</div>
+<div class="flowCard">
+<div class="flowTitle">PLURAL COM -ES</div>
+<div class="flowRows">
+<div class="flowRow"><span>papel</span><span class="flowArrow">→</span><span>papeles</span></div>
+<div class="flowRow"><span>flor</span><span class="flowArrow">→</span><span>flores</span></div>
+<div class="flowRow"><span>canción</span><span class="flowArrow">→</span><span>canciones</span></div>
+</div>
+</div>
+</div>
+<div class="bookInfoBox warm">
+                    Dica: quando a palavra termina em vogal, muitas vezes o plural recebe <b>-s</b>. Quando termina em consoante, muitas vezes recebe <b>-es</b>.
+                  </div>
+<div class="bookImageFrame">
+<img alt="Painel singular e plural" loading="lazy" src="painel-numero-singular-plural.png"/>
+</div>
+</article>
+<article class="bookPage" data-book-page="3">
+<div class="bookPageTitle">Página 4 • Excepciones y palabras clave</div>
+<div class="rulePosterGrid">
+<div class="rulePoster softMasc">
+<div class="rulePosterTitle">TERMINAM EM -A, MAS SÃO MASCULINOS</div>
+<ul>
+<li>el día</li>
+<li>el mapa</li>
+<li>el problema</li>
+<li>el clima</li>
+<li>el tema</li>
+<li>el sistema</li>
+<li>el idioma</li>
+<li>el atleta</li>
+</ul>
+</div>
+<div class="rulePoster softFem2">
+<div class="rulePosterTitle">EXCEÇÕES IMPORTANTES</div>
+<ul>
+<li>la mano</li>
+<li>la radio</li>
+<li>la foto</li>
+</ul>
+<p><b>el agua</b> • <b>el hacha</b> usam <b>el</b> no singular por som, mas continuam femininas.</p>
+</div>
+</div>
+<div class="controls">
+<button class="ctrlBtn miniRuleBtn miniRuleYellow" data-es="Cómo observar género y número" data-example="el libro / los libros • la canción / las canciones • el problema • la mano" data-pt="Observe a terminação, veja a formação do plural e memorize exceções comuns." data-rule="Estratégia: 1) veja o gênero; 2) transforme para o plural; 3) confira as exceções; 4) pratique com exemplos frequentes." data-title="RESUMEN FINAL">ABRIR RESUMO FINAL</button>
+</div>
+</article>
+</div>
+<div class="bookNav">
+<button class="ctrlBtn" id="bookPrevBtn">◀ ANTERIOR</button>
+<div class="bookDots" id="bookDots"></div>
+<button class="ctrlBtn ctrlBtnPrimary" id="bookNextBtn">PRÓXIMA ▶</button>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="cardTitle">2) LABERINTO PREMIUM — RUTA SECRETA FEMENINA</div>
+<p class="hint">Clique somente na <b>próxima palavra feminina vizinha</b>. Agora há exceções e armadilhas: palavras terminadas em <b>-a</b> que são masculinas e femininas fora da rota.</p>
+<div class="mazeShell">
+<div class="mazeHeaderRow">
+<div class="mazeStart">🚪 SALIDA</div>
+<div class="mazeCenterBadge">13 passos • rota única</div>
+<div class="mazeGoal">LLEGADA 🚩</div>
+</div>
+<div class="mazeBoard" id="mazeBoard">
+<button class="mazeCell startCell" data-clue="♀" data-col="0" data-fem="true" data-row="0" data-word="mano">mano</button>
+<button class="mazeCell" data-clue="♀" data-col="1" data-fem="true" data-row="0" data-word="ciudad">ciudad</button>
+<button class="mazeCell" data-clue="⚠" data-col="2" data-fem="false" data-row="0" data-word="problema">problema</button>
+<button class="mazeCell" data-clue="⚠" data-col="3" data-fem="false" data-row="0" data-word="clima">clima</button>
+<button class="mazeCell" data-clue="♀" data-col="4" data-fem="true" data-row="0" data-word="mesa">mesa</button>
+<button class="mazeCell" data-clue="⚠" data-col="0" data-fem="false" data-row="1" data-word="mapa">mapa</button>
+<button class="mazeCell" data-clue="⚠" data-col="1" data-fem="false" data-row="1" data-word="día">día</button>
+<button class="mazeCell" data-clue="♀" data-col="2" data-fem="true" data-row="1" data-word="canción">canción</button>
+<button class="mazeCell" data-clue="⚠" data-col="3" data-fem="false" data-row="1" data-word="idioma">idioma</button>
+<button class="mazeCell" data-clue="♀" data-col="4" data-fem="true" data-row="1" data-word="luna">luna</button>
+<button class="mazeCell" data-clue="⚠" data-col="0" data-fem="false" data-row="2" data-word="poema">poema</button>
+<button class="mazeCell" data-clue="♀" data-col="1" data-fem="true" data-row="2" data-word="salud">salud</button>
+<button class="mazeCell" data-clue="♀" data-col="2" data-fem="true" data-row="2" data-word="luz">luz</button>
+<button class="mazeCell" data-clue="⚠" data-col="3" data-fem="false" data-row="2" data-word="sistema">sistema</button>
+<button class="mazeCell" data-clue="♀" data-col="4" data-fem="true" data-row="2" data-word="voz">voz</button>
+<button class="mazeCell" data-clue="⚠" data-col="0" data-fem="false" data-row="3" data-word="planeta">planeta</button>
+<button class="mazeCell" data-clue="♀" data-col="1" data-fem="true" data-row="3" data-word="clase">clase</button>
+<button class="mazeCell" data-clue="♂" data-col="2" data-fem="false" data-row="3" data-word="puente">puente</button>
+<button class="mazeCell" data-clue="♀" data-col="3" data-fem="true" data-row="3" data-word="mujer">mujer</button>
+<button class="mazeCell" data-clue="⚠" data-col="4" data-fem="false" data-row="3" data-word="tema">tema</button>
+<button class="mazeCell" data-clue="♂" data-col="0" data-fem="false" data-row="4" data-word="viaje">viaje</button>
+<button class="mazeCell" data-clue="♀" data-col="1" data-fem="true" data-row="4" data-word="foto">foto</button>
+<button class="mazeCell" data-clue="⚠" data-col="2" data-fem="false" data-row="4" data-word="atleta">atleta</button>
+<button class="mazeCell" data-clue="♀" data-col="3" data-fem="true" data-row="4" data-word="calle">calle</button>
+<button class="mazeCell" data-clue="♀" data-col="4" data-fem="true" data-row="4" data-word="universidad">universidad</button>
+<button class="mazeCell" data-clue="♂" data-col="0" data-fem="false" data-row="5" data-word="equipaje">equipaje</button>
+<button class="mazeCell" data-clue="♂" data-col="1" data-fem="false" data-row="5" data-word="color">color</button>
+<button class="mazeCell" data-clue="♀" data-col="2" data-fem="true" data-row="5" data-word="radio">radio</button>
+<button class="mazeCell" data-clue="♀" data-col="3" data-fem="true" data-row="5" data-word="libertad">libertad</button>
+<button class="mazeCell" data-clue="♀" data-col="4" data-fem="true" data-row="5" data-word="noche">noche</button>
+<button class="mazeCell" data-clue="♂" data-col="0" data-fem="false" data-row="6" data-word="árbol">árbol</button>
+<button class="mazeCell" data-clue="♂" data-col="1" data-fem="false" data-row="6" data-word="reloj">reloj</button>
+<button class="mazeCell" data-clue="♀" data-col="2" data-fem="true" data-row="6" data-word="verdad">verdad</button>
+<button class="mazeCell" data-clue="♀" data-col="3" data-fem="true" data-row="6" data-word="flor">flor</button>
+<button class="mazeCell" data-clue="♂" data-col="4" data-fem="false" data-row="6" data-word="amor">amor</button>
+<button class="mazeCell" data-clue="♂" data-col="0" data-fem="false" data-row="7" data-word="mes">mes</button>
+<button class="mazeCell" data-clue="♂" data-col="1" data-fem="false" data-row="7" data-word="papel">papel</button>
+<button class="mazeCell" data-clue="♀" data-col="2" data-fem="true" data-row="7" data-word="hacha">hacha</button>
+<button class="mazeCell" data-clue="♀" data-col="3" data-fem="true" data-row="7" data-word="televisión">televisión</button>
+<button class="mazeCell goalCell" data-clue="♀" data-col="4" data-fem="true" data-row="7" data-word="nación">nación</button>
+</div>
+<div class="mazeInfoPanel">
+<div class="mazeBadgeRow">
+<span class="mazeBadge">🎯 Rota: femininas vizinhas</span>
+<span class="mazeBadge">⚠ Armadilhas: -a masculino</span>
+<span class="mazeBadge">♀ Femininas fora da rota</span>
+<span class="mazeBadge">🔁 Errou: reinicia</span>
+</div>
+<div class="answerMsg" id="mazeMsg">Comece na SALIDA e siga a rota secreta de 13 palavras femininas até a LLEGADA. Cuidado: há femininas fora do caminho e masculinas com cara de femininas.</div>
+<div class="answerMsg" id="mazeDoneMsg" style="display:none;color:#137333;">ATIVIDADE CONCLUÍDA! Você venceu o labirinto premium das palavras femininas.</div>
+<div class="controls">
+<button class="ctrlBtn" id="mazeResetBtn">REINICIAR LABERINTO</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =======================================================
+     PÁGINA 2 — EXERCÍCIOS VALIDADOS
+======================================================== -->
+<section class="page" id="page2">
+<div class="content">
+<div class="titleRow">
+<div></div>
+<div class="centerTitle">PÁGINA 2 PREMIUM • DUCK HUNT DE PALABRAS MASCULINAS</div>
+<div class="bncc">Reconocimiento de sustantivos masculinos • atención • rapidez</div>
+</div>
+<div class="bars">
+<div class="bar"></div>
+<div style="width:16px"></div>
+<div class="bar"></div>
+</div>
+<div class="cols oneCol">
+<div class="card duckPageCard">
+<div class="cardTitle">CAZA MASCULINA — MUCHOS GLOBOS COLORIDOS</div>
+<p class="hint">
+          En cada ronda aparece <b>un monte de globos coloridos</b>, pero solo <b>1 globo tiene palabra masculina</b>.
+          Haz clic únicamente en la <b>palabra masculina</b>. Si aciertas, ganas <b>10 puntos</b>. Si disparas a una palabra femenina o fallas el tiro,
+          el perro se ríe y el juego vuelve al inicio. Si pasan <b>12 segundos</b>, todos los globos suben, explotan y la partida reinicia.
+        </p>
+<div class="duckWrap">
+<div class="duckTopHud">
+<div class="duckHudBox">🎯 Ronda: <span id="duckRound">0</span>/10</div>
+<div class="duckHudBox">⭐ Puntos: <span id="duckHits">0</span></div>
+<div class="duckHudBox">❌ Errores: <span id="duckMisses">0</span></div>
+<div class="duckHudBox">🏁 Estado: <span id="duckFound">Listo</span></div>
+</div>
+<div class="duckGame" id="duckGame">
+<img alt="Fondo Duck Hunt" class="duckSceneBg" loading="lazy" src="duckhunt-fondo.png"/>
+<img alt="" class="duckFloatingBush" id="duckBushLeft" loading="lazy" src="arbusto.png"/>
+<img alt="" class="duckFloatingBush" id="duckBushCenter" loading="lazy" src="arbusto.png"/>
+<img alt="" class="duckFloatingBush" id="duckBushRight" loading="lazy" src="arbusto.png"/>
+<button aria-label="Globo A" class="duckBalloon" id="duckBalloonA" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonALabel">libro</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo B" class="duckBalloon" id="duckBalloonB" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonBLabel">mesa</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo C" class="duckBalloon" id="duckBalloonC" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonCLabel">casa</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo D" class="duckBalloon" id="duckBalloonD" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonDLabel">luna</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo E" class="duckBalloon" id="duckBalloonE" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonELabel">flor</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo F" class="duckBalloon" id="duckBalloonF" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonFLabel">estrella</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo G" class="duckBalloon" id="duckBalloonG" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonGLabel">radio</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo H" class="duckBalloon" id="duckBalloonH" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonHLabel">mano</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo I" class="duckBalloon" id="duckBalloonI" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonILabel">calle</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo J" class="duckBalloon" id="duckBalloonJ" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonJLabel">voz</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo K" class="duckBalloon" id="duckBalloonK" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonKLabel">noche</span>
+<span class="duckBalloonString"></span>
+</button>
+<button aria-label="Globo L" class="duckBalloon" id="duckBalloonL" type="button">
+<span class="duckBalloonBody"></span>
+<span class="duckBalloonLabel" id="duckBalloonLLabel">playa</span>
+<span class="duckBalloonString"></span>
+</button>
+<div class="duckDogStage" id="duckDogStage">
+<div class="duckDogBubble" id="duckDogBubble">Pulsa INICIAR para comenzar.</div>
+<img alt="Perro riendo" id="duckDogLaugh" loading="lazy" src="rindo.png"/>
+</div>
+<div class="duckCrosshair" id="duckCrosshair">
+<img alt="" loading="lazy" src="mira.png"/>
+</div>
+</div>
+<div class="duckBottomPanel">
+<div class="duckBadgeRow">
+<span class="mazeBadge">🎈 12 globos por ronda</span>
+<span class="mazeBadge">🎯 Haz clic solo en la masculina</span>
+<span class="mazeBadge">🐶 Error = reinicia</span>
+</div>
+<div class="answerMsg" id="duckMsg">Pulsa INICIAR JUEGO para empezar.</div>
+<div class="answerMsg" id="duckDoneMsg" style="display:none;color:#137333;">ACTIVIDAD CONCLUIDA — Duck Hunt completado con éxito.</div>
+<div class="controls">
+<button class="ctrlBtn ctrlBtnPrimary" id="duckStartBtn">INICIAR JUEGO</button>
+<button class="ctrlBtn" id="duckRestartBtn">REINICIAR</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================
+     [INÍCIO] PÁGINA 3 — TETRIS SINGULAR Y PLURAL
+========================================================== -->
+<section class="page page-3" id="page3">
+<div class="page-inner p3-tetris-shell">
+<!-- [INÍCIO] CABEÇALHO DA PÁGINA 3 -->
+<div class="p3-topbar">
+<div class="p3-title-wrap">
+<div class="p3-kicker">PÁGINA 3 • JUEGO INTERACTIVO</div>
+<h2 class="p3-title">TETRIS — SINGULAR Y PLURAL</h2>
+<p class="p3-subtitle">
+          Organiza las piezas y aprende el singular y el plural en español.
+          <strong>Meta: 5000 puntos.</strong>
+</p>
+</div>
+<div class="p3-goal-box">
+<div class="p3-goal-label">Objetivo</div>
+<div class="p3-goal-value">5000</div>
+<div class="p3-goal-mini">Al llegar a 5000 puntos, la actividad se completa.</div>
+</div>
+</div>
+<!-- [FIM] CABEÇALHO DA PÁGINA 3 -->
+<!-- [INÍCIO] CONTEÚDO DA PÁGINA 3 -->
+<div class="p3-tetris-layout">
+<!-- [INÍCIO] COLUNA ÚNICA DO JOGO -->
+<div class="p3-tetris-column">
+<!-- [INÍCIO] PAINEL DE INFORMAÇÕES -->
+<div class="p3-info-grid">
+<div class="p3-card">
+<div class="p3-label">Puntos</div>
+<div class="p3-big p3-score" id="tetrisScore">0</div>
+</div>
+<div class="p3-card">
+<div class="p3-label">Nivel</div>
+<div class="p3-big p3-level" id="tetrisLevel">1</div>
+</div>
+<div class="p3-card p3-progress-card">
+<div class="p3-label">Progreso</div>
+<div class="p3-progress-bar">
+<div class="p3-progress-fill" id="tetrisProgressFill"></div>
+</div>
+<div class="p3-progress-text" id="tetrisProgressText">0 / 5000</div>
+</div>
+</div>
+<!-- [FIM] PAINEL DE INFORMAÇÕES -->
+<!-- [INÍCIO] JOGO -->
+<div class="p3-game-card">
+<div class="p3-game-stage">
+<div class="p3-canvas-wrap">
+<canvas aria-label="Tetris singular y plural" height="576" id="tetrisCanvas" width="288"></canvas>
+<div class="p3-overlay hidden" id="tetrisStartOverlay">
+<div class="p3-overlay-box">
+<h3>¡Vamos a jugar!</h3>
+<p>Meta: llegar a <strong>5000 puntos</strong>.</p>
+<button class="p3-btn p3-btn-primary" id="tetrisStartBtn" type="button">
+                    Iniciar
+                  </button>
+</div>
+</div>
+<div class="p3-overlay hidden" id="tetrisWinOverlay">
+<div class="p3-overlay-box">
+<h3>¡Muy bien!</h3>
+<p>Has completado la actividad con <strong>5000 puntos o más</strong>.</p>
+<button class="p3-btn p3-btn-primary" id="tetrisContinueBtn" type="button">
+                    Continuar
+                  </button>
+</div>
+</div>
+<div class="p3-overlay hidden" id="tetrisGameOverOverlay">
+<div class="p3-overlay-box">
+<h3>¡Inténtalo de nuevo!</h3>
+<p id="tetrisFinalScoreText">Puntos: 0</p>
+<button class="p3-btn p3-btn-primary" id="tetrisRestartBtn" type="button">
+                    Reintentar
+                  </button>
+</div>
+</div>
+</div>
+<aside aria-label="Palabra y plural visibles" class="p3-side-panel">
+<div class="p3-side-card">
+<div class="p3-side-title">Palabra que está cayendo</div>
+<div class="p3-word-badge">
+<div class="p3-current-word" id="tetrisCurrentWord">-</div>
+<div class="p3-current-type" id="tetrisCurrentType">Tipo</div>
+</div>
+<div class="p3-pair" id="tetrisCurrentPair">Par: -</div>
+<div class="p3-side-rule" id="tetrisFeedback">
+                  Observa la palabra y su plural antes de mover la pieza.
+                </div>
+</div>
+<div class="p3-side-card">
+<div class="p3-side-title">Ejemplo visible</div>
+<div class="p3-pair">
+<span id="tetrisExampleSingular">perro</span>
+                  →
+                  <span id="tetrisExamplePlural">perros</span>
+</div>
+</div>
+</aside>
+</div>
+<!-- [INÍCIO] CONTROLES TOUCH -->
+<div class="p3-touch-controls">
+<button class="p3-touch-btn" id="tetrisBtnLeft" type="button">⬅</button>
+<button class="p3-touch-btn" id="tetrisBtnRotate" type="button">⟳</button>
+<button class="p3-touch-btn" id="tetrisBtnDown" type="button">⬇</button>
+<button class="p3-touch-btn" id="tetrisBtnRight" type="button">➡</button>
+<button class="p3-touch-btn p3-touch-btn-wide" id="tetrisBtnDrop" type="button">⚡ Caída rápida</button>
+</div>
+<!-- [FIM] CONTROLES TOUCH -->
+<!-- [INÍCIO] AJUDA -->
+<div class="p3-help">
+<div class="p3-help-title">Controles</div>
+<div class="p3-help-grid">
+<span>⬅ / ➡ mover</span>
+<span>⟳ girar</span>
+<span>⬇ bajar</span>
+<span>ESPACIO caída rápida</span>
+</div>
+</div>
+<!-- [FIM] AJUDA -->
+</div>
+<!-- [FIM] JOGO -->
+</div>
+<!-- [FIM] COLUNA ÚNICA DO JOGO -->
+</div>
+<!-- [FIM] CONTEÚDO DA PÁGINA 3 -->
+</div>
+</section>
+<!-- =========================================================
+     [FIM] PÁGINA 3 — TETRIS SINGULAR Y PLURAL
+========================================================== -->
+<!-- =======================================================
+         PÁGINA 4 — ESCAPE ROOM + CERTIFICADO
+    ======================================================== -->
+<section class="page" id="page4">
+<div class="content">
+<div class="titleRow">
+<div></div>
+<div class="centerTitle">PÁGINA 4 PREMIUM • ESCAPE ROOM FALANGE</div>
+<div class="bncc">Síntese • revisão • certificação</div>
+</div>
+<div class="bars">
+<div class="bar"></div>
+<div style="width:16px"></div>
+<div class="bar"></div>
+</div>
+<div class="escapeTop escapeTop20">
+<div class="escapePanel escapeQuestionsPanel">
+<div class="cardTitle">MISSÃO — 20 DESAFIOS</div>
+<div class="missionBox">
+              O Cofre da Concordância foi trancado. Para liberá-lo, resolva <b>20 perguntas</b> sobre formação de <b>género</b> e <b>número</b> em espanhol. Cada resposta correta libera uma chave. No final, digite o código secreto na ordem das letras liberadas.
+            </div>
+<div class="escapeQuestion" data-key="A">
+<h4>1) Qual é a forma correta para “mesa”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">el mesa blanco</button>
+                  <button class="escapeChoice" data-correct="true">la mesa blanca</button>
+                  <button class="escapeChoice" data-correct="false">la mesa blancos</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="B">
+<h4>2) Qual é o plural correto de “papel”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="true">papeles</button>
+                  <button class="escapeChoice" data-correct="false">papels</button>
+                  <button class="escapeChoice" data-correct="false">papelos</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="C">
+<h4>3) Qual sequência está totalmente correta?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">niño altas</button>
+                  <button class="escapeChoice" data-correct="false">niñas alto</button>
+                  <button class="escapeChoice" data-correct="true">niñas altas</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="D">
+<h4>4) Que classificação tem “los libros rojos”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">femenino singular</button>
+                  <button class="escapeChoice" data-correct="true">masculino plural</button>
+                  <button class="escapeChoice" data-correct="false">femenino plural</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="E">
+<h4>5) Qual é o feminino de “profesor”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">profesoro</button>
+                  <button class="escapeChoice" data-correct="false">profesores</button>
+                  <button class="escapeChoice" data-correct="true">profesora</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="F">
+<h4>6) Qual é o masculino de “amiga”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="true">amigo</button>
+                  <button class="escapeChoice" data-correct="false">amigos</button>
+                  <button class="escapeChoice" data-correct="false">amigue</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="G">
+<h4>7) Qual é o plural de “canción”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">cancións</button>
+                  <button class="escapeChoice" data-correct="true">canciones</button>
+                  <button class="escapeChoice" data-correct="false">canciónes</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="H">
+<h4>8) Qual frase está correta?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">los casas bonitas</button>
+                  <button class="escapeChoice" data-correct="false">la casas bonito</button>
+                  <button class="escapeChoice" data-correct="true">las casas bonitas</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="I">
+<h4>9) “el problema” é:</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="true">masculino singular</button>
+                  <button class="escapeChoice" data-correct="false">femenino singular</button>
+                  <button class="escapeChoice" data-correct="false">masculino plural</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="J">
+<h4>10) Qual é o plural de “luz”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">luzes</button>
+                  <button class="escapeChoice" data-correct="true">luces</button>
+                  <button class="escapeChoice" data-correct="false">luzs</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="K">
+<h4>11) Qual é o artigo correto para “mano”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">el mano</button>
+                  <button class="escapeChoice" data-correct="false">los mano</button>
+                  <button class="escapeChoice" data-correct="true">la mano</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="L">
+<h4>12) Qual é o plural correto de “reloj”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="true">relojes</button>
+                  <button class="escapeChoice" data-correct="false">relojs</button>
+                  <button class="escapeChoice" data-correct="false">relojez</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="M">
+<h4>13) Qual forma concorda com “el niño”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">alta</button>
+                  <button class="escapeChoice" data-correct="true">alto</button>
+                  <button class="escapeChoice" data-correct="false">altas</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="N">
+<h4>14) Qual forma concorda com “las flores”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">bonito</button>
+                  <button class="escapeChoice" data-correct="false">bonita</button>
+                  <button class="escapeChoice" data-correct="true">bonitas</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="O">
+<h4>15) “la ciudad grande” está no:</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="true">femenino singular</button>
+                  <button class="escapeChoice" data-correct="false">masculino singular</button>
+                  <button class="escapeChoice" data-correct="false">femenino plural</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="P">
+<h4>16) Qual é o plural de “universidad”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">universidads</button>
+                  <button class="escapeChoice" data-correct="true">universidades</button>
+                  <button class="escapeChoice" data-correct="false">universidadeses</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="Q">
+<h4>17) Qual frase está correta?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">la día soleada</button>
+                  <button class="escapeChoice" data-correct="false">los día soleados</button>
+                  <button class="escapeChoice" data-correct="true">el día soleado</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="R">
+<h4>18) Qual é o feminino de “trabajador”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="true">trabajadora</button>
+                  <button class="escapeChoice" data-correct="false">trabajadoro</button>
+                  <button class="escapeChoice" data-correct="false">trabajadores</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="S">
+<h4>19) Qual é o plural de “voz”?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">vozes</button>
+                  <button class="escapeChoice" data-correct="true">voces</button>
+                  <button class="escapeChoice" data-correct="false">vozs</button>
+</div>
+</div>
+<div class="escapeQuestion" data-key="T">
+<h4>20) Qual sequência está correta?</h4>
+<div class="escapeChoices">
+                  <button class="escapeChoice" data-correct="false">la mapa antigua</button>
+                  <button class="escapeChoice" data-correct="false">las mapa antiguas</button>
+                  <button class="escapeChoice" data-correct="true">el mapa antiguo</button>
+</div>
+</div>
+</div>
+<div class="escapePanel escapeKeysPanel">
+<div class="cardTitle">CHAVES LIBERADAS</div>
+<div class="keySlots keySlots20">
+<div class="keySlot" id="slotA">A</div>
+<div class="keySlot" id="slotB">B</div>
+<div class="keySlot" id="slotC">C</div>
+<div class="keySlot" id="slotD">D</div>
+<div class="keySlot" id="slotE">E</div>
+<div class="keySlot" id="slotF">F</div>
+<div class="keySlot" id="slotG">G</div>
+<div class="keySlot" id="slotH">H</div>
+<div class="keySlot" id="slotI">I</div>
+<div class="keySlot" id="slotJ">J</div>
+<div class="keySlot" id="slotK">K</div>
+<div class="keySlot" id="slotL">L</div>
+<div class="keySlot" id="slotM">M</div>
+<div class="keySlot" id="slotN">N</div>
+<div class="keySlot" id="slotO">O</div>
+<div class="keySlot" id="slotP">P</div>
+<div class="keySlot" id="slotQ">Q</div>
+<div class="keySlot" id="slotR">R</div>
+<div class="keySlot" id="slotS">S</div>
+<div class="keySlot" id="slotT">T</div>
+</div>
+<div class="codePanel">
+<div class="codeDisplay">Código secreto do cofre: <b>use as 20 letras liberadas na ordem A até T</b></div>
+<div class="codeRow">
+<input class="codeInput" id="finalCode" placeholder="Digite o código" type="text"/>
+<button class="ctrlBtn ctrlBtnPrimary" id="checkCodeBtn">ABRIR COFRE</button>
+</div>
+<div class="answerMsg" id="codeMsg">Resolva as 20 questões e digite o código.</div>
+<div class="unlockBox" id="unlockBox">
+                COFRE ABERTO! Aula 11 concluída com sucesso.
+                <div class="controls">
+<button class="ctrlBtn ctrlBtnGood" disabled="disabled" id="openCertificateBtn">CERTIFICADO BLOQUEADO</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="page4LockOverlay" class="page4LockOverlay">
+  <div class="page4LockBox">
+    <div class="page4LockIcon">🔒</div>
+    <div class="page4LockTitle">PÁGINA 4 BLOQUEADA</div>
+    <div class="page4LockText">Complete as páginas 1, 2 e 3 para desbloquear o Escape Room.</div>
+    <div class="page4LockChecklist">
+      <div id="lockCheckP1">⬜ Página 1 — Labirinto</div>
+      <div id="lockCheckP2">⬜ Página 2 — Balões</div>
+      <div id="lockCheckP3">⬜ Página 3 — Tetris</div>
+    </div>
+  </div>
+</div>
+</section>
+</main>
+<!-- MODAL DE EXPLICAÇÃO -->
+<div id="infoOverlay">
+<div id="infoCard">
+<div id="infoInner">
+<div id="infoTitle">EXPLICAÇÃO</div>
+<div id="infoES"></div>
+<div id="infoPT"></div>
+<div id="infoRule"></div>
+<div id="infoExample"></div>
+<div id="infoBtns">
+<button class="overlayBtn overlayBtnPrimary" id="closeInfoBtn">FECHAR</button>
+</div>
+</div>
+</div>
+</div>
+<!-- CERTIFICADO -->
+<div id="certOverlay">
+<div id="certCard">
+<div id="certInner">
+<div id="certWatermarkCloud" aria-hidden="true"></div>
+<div id="certTitle">CERTIFICADO DE CONCLUSÃO</div>
+<div id="certSub">Aula 11 Premium Falange — Género y número</div>
+<div id="certName">Estudante</div>
+<div id="certMeta">
+          Concluiu com êxito as atividades de leitura, classificação, concordância e revisão sobre <b>género y número de los sustantivos y adjetivos en español</b>.
+          <br><br>
+          Escola: <span id="certSchool">—</span>
+<br/>
+          Turma: <span id="certClass">—</span>
+<br/>
+          Data: <span id="certDate">—</span>
+</br></br>
+<br/>
+          Código antifraude: <b><span id="certAntiCode">BLOQUEADO</span></b>
+<br/>
+<small>Certificado válido somente com código antifraude gerado após a abertura correta do cofre.</small>
+<div id="certWatermark">VALIDADO PELO ESCAPE ROOM • <span id="certAntiCodeWatermark">BLOQUEADO</span></div>
+<div id="certValidationBox">
+  VALIDAÇÃO VISUAL: o código deve combinar com o NOME, ESCOLA, TURMA e DATA exibidos no certificado.
+  <br>Identificador: <span id="certFingerprint">BLOQUEADO</span>
+  <div class="certTamperNotice">Print editado perde validade se o nome/turma não aparecerem repetidos na marca d’água e no identificador.</div>
+</div>
+</div>
+<div id="certBtns">
+<button class="certBtn" id="printCertBtn">IMPRIMIR</button>
+<button class="certBtn certBtnPrimary" id="closeCertBtn">FECHAR</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  /* =========================================================
+     [INÍCIO] 1) HELPERS GERAIS
+  ========================================================== */
+  const $ = (sel, ctx=document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
+
+  function normalizeText(v){
+    return (v || "")
+      .toString()
+      .trim()
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function todayBR(){
+    return new Date().toLocaleDateString("pt-BR");
+  }
+  /* =========================================================
+     [FIM] 1) HELPERS GERAIS
+  ========================================================== */
+
+
+  /* =========================================================
+     [AJUSTE PONTUAL] BLOQUEIO DA PÁGINA 4
+     A Página 4 só libera após concluir:
+     P1 Labirinto + P2 Balões + P3 Tetris
+  ========================================================== */
+  window.aula11LaberintoConcluido = false;
+  window.aula11DuckHuntConcluido = false;
+  window.page3Completed = false;
+
+  function setFalangePageComplete(pageNumber, value=true){
+    if(pageNumber === 1) window.aula11LaberintoConcluido = !!value;
+    if(pageNumber === 2) window.aula11DuckHuntConcluido = !!value;
+    if(pageNumber === 3) window.page3Completed = !!value;
+    updatePage4Lock();
+  }
+
+  function updatePage4Lock(){
+    const page4 = $("#page4");
+    if(!page4) return;
+
+    const p1 = !!window.aula11LaberintoConcluido;
+    const p2 = !!window.aula11DuckHuntConcluido;
+    const p3 = !!window.page3Completed;
+    const unlocked = p1 && p2 && p3;
+
+    page4.classList.toggle("page4Locked", !unlocked);
+    page4.dataset.locked = unlocked ? "false" : "true";
+
+    const c1 = $("#lockCheckP1");
+    const c2 = $("#lockCheckP2");
+    const c3 = $("#lockCheckP3");
+    if(c1) c1.textContent = (p1 ? "✅" : "⬜") + " Página 1 — Labirinto";
+    if(c2) c2.textContent = (p2 ? "✅" : "⬜") + " Página 2 — Balões";
+    if(c3) c3.textContent = (p3 ? "✅" : "⬜") + " Página 3 — Tetris";
+  }
+
+  /* =========================================================
+     [INÍCIO] 2) REGISTRO / INÍCIO DA AULA
+  ========================================================== */
+  const saveRegisterBtn = $("#saveRegisterBtn");
+  const mainWrap = $("#mainWrap");
+  const studentRegister = $("#studentRegister");
+  const certName = $("#certName");
+  const certClass = $("#certClass");
+  const certSchool = $("#certSchool");
+  const certDate = $("#certDate");
+
+  saveRegisterBtn.addEventListener("click", ()=>{
+    const name = $("#studentName").value.trim();
+    const school = $("#studentSchool").value.trim();
+    const turma = $("#studentClass").value.trim();
+
+    if(!name || !school || !turma){
+      alert("Preencha nome, escola e turma para iniciar.");
+      return;
+    }
+
+    certName.textContent = name;
+    certSchool.textContent = school;
+    certClass.textContent = turma;
+    certDate.textContent = todayBR();
+
+    window.aula11LaberintoConcluido = false;
+    window.aula11DuckHuntConcluido = false;
+    window.page3Completed = false;
+    updatePage4Lock();
+
+    studentRegister.style.display = "none";
+    mainWrap.style.display = "flex";
+    window.scrollTo({ top:0, behavior:"smooth" });
+  });
+  /* =========================================================
+     [FIM] 2) REGISTRO / INÍCIO DA AULA
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 3) MODAL DE EXPLICAÇÃO + MINI-LIVRO
+  ========================================================== */
+  const infoOverlay = $("#infoOverlay");
+  const infoTitle = $("#infoTitle");
+  const infoES = $("#infoES");
+  const infoPT = $("#infoPT");
+  const infoRule = $("#infoRule");
+  const infoExample = $("#infoExample");
+
+  function openInfoFromDataset(ds){
+    infoTitle.textContent = ds.title || "EXPLICAÇÃO";
+    infoES.textContent = ds.es || "";
+    infoPT.textContent = ds.pt || "";
+    infoRule.textContent = ds.rule || "";
+    infoExample.textContent = ds.example || "";
+    infoOverlay.style.display = "flex";
+  }
+
+  $$(".infoBtn, .miniRuleBtn, .wordTile").forEach(btn=>{
+    btn.addEventListener("click", ()=> openInfoFromDataset(btn.dataset));
+  });
+
+  $("#closeInfoBtn").addEventListener("click", ()=> infoOverlay.style.display = "none");
+  infoOverlay.addEventListener("click", (e)=>{
+    if(e.target === infoOverlay) infoOverlay.style.display = "none";
+  });
+
+  const bookPages = $$(".bookPage");
+  const bookDots = $("#bookDots");
+  const bookPrevBtn = $("#bookPrevBtn");
+  const bookNextBtn = $("#bookNextBtn");
+  let currentBookPage = 0;
+
+  function renderBookDots(){
+    if(!bookDots) return;
+    bookDots.innerHTML = "";
+    bookPages.forEach((_, index)=>{
+      const dot = document.createElement("span");
+      dot.className = "bookDot" + (index === currentBookPage ? " on" : "");
+      dot.addEventListener("click", ()=> goBookPage(index));
+      bookDots.appendChild(dot);
+    });
+  }
+
+  function goBookPage(index){
+    currentBookPage = Math.max(0, Math.min(index, bookPages.length - 1));
+    bookPages.forEach((page, i)=> page.classList.toggle("active", i === currentBookPage));
+    if(bookPrevBtn) bookPrevBtn.disabled = currentBookPage === 0;
+    if(bookNextBtn) bookNextBtn.disabled = currentBookPage === bookPages.length - 1;
+    renderBookDots();
+  }
+
+  if(bookPrevBtn && bookNextBtn && bookPages.length){
+    bookPrevBtn.addEventListener("click", ()=> goBookPage(currentBookPage - 1));
+    bookNextBtn.addEventListener("click", ()=> goBookPage(currentBookPage + 1));
+    goBookPage(0);
+  }
+  /* =========================================================
+     [FIM] 3) MODAL DE EXPLICAÇÃO + MINI-LIVRO
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 4) LABIRINTO INTERATIVO — PÁGINA 1
+  ========================================================== */
+  const mazeCells = $$(".mazeCell");
+  const mazeMsg = $("#mazeMsg");
+  const mazeResetBtn = $("#mazeResetBtn");
+  const mazeDoneMsg = $("#mazeDoneMsg");
+
+  const mazeSolution = [
+    { row:0, col:0, word:"mano" },
+    { row:0, col:1, word:"ciudad" },
+    { row:1, col:2, word:"canción" },
+    { row:2, col:2, word:"luz" },
+    { row:3, col:1, word:"clase" },
+    { row:4, col:1, word:"foto" },
+    { row:5, col:2, word:"radio" },
+    { row:5, col:3, word:"libertad" },
+    { row:4, col:4, word:"universidad" },
+    { row:5, col:4, word:"noche" },
+    { row:6, col:3, word:"flor" },
+    { row:7, col:3, word:"televisión" },
+    { row:7, col:4, word:"nación" }
+  ];
+
+  const mazeDecoyNeighbors = new Set([
+    "1-0","1-1","0-2","0-4","1-4","2-1","2-4","3-3","4-3","6-2","7-2","6-4"
+  ]);
+  let mazeStep = 0;
+
+  function resetMaze(reshuffle=false){
+    mazeStep = 0;
+    mazeCells.forEach(cell=>{
+      cell.classList.remove("selected", "wrong", "locked");
+      cell.removeAttribute("data-step");
+    });
+    if(mazeDoneMsg) mazeDoneMsg.style.display = "none";
+    if(reshuffle) reshuffleMazeWords();
+
+    const startCell = mazeCells.find(cell => cell.dataset.row === "0" && cell.dataset.col === "0");
+    if(startCell){
+      startCell.classList.add("selected", "locked");
+      startCell.dataset.step = "1";
+    }
+
+    mazeMsg.textContent = `Comece na SALIDA e siga a rota secreta de ${mazeSolution.length} palavras femininas até a LLEGADA. Cuidado: há femininas fora do caminho e masculinas com cara de femininas.`;
+    setFalangePageComplete(1, false);
+  }
+
+  function reshuffleMazeWords(){
+    const protectedCells = mazeCells.filter(cell =>
+      mazeSolution.some(step => String(step.row) === cell.dataset.row && String(step.col) === cell.dataset.col)
+    );
+    const freeCells = mazeCells.filter(cell =>
+      !mazeSolution.some(step => String(step.row) === cell.dataset.row && String(step.col) === cell.dataset.col)
+    );
+
+    const hardPool = [
+      { word:"mesa", fem:"true", clue:"♀" }, { word:"luna", fem:"true", clue:"♀" }, { word:"salud", fem:"true", clue:"♀" },
+      { word:"voz", fem:"true", clue:"♀" }, { word:"mujer", fem:"true", clue:"♀" }, { word:"calle", fem:"true", clue:"♀" },
+      { word:"verdad", fem:"true", clue:"♀" }, { word:"hacha", fem:"true", clue:"♀" },
+      { word:"problema", fem:"false", clue:"⚠" }, { word:"clima", fem:"false", clue:"⚠" }, { word:"mapa", fem:"false", clue:"⚠" },
+      { word:"día", fem:"false", clue:"⚠" }, { word:"idioma", fem:"false", clue:"⚠" }, { word:"poema", fem:"false", clue:"⚠" },
+      { word:"sistema", fem:"false", clue:"⚠" }, { word:"planeta", fem:"false", clue:"⚠" }, { word:"tema", fem:"false", clue:"⚠" },
+      { word:"atleta", fem:"false", clue:"⚠" }, { word:"viaje", fem:"false", clue:"♂" }, { word:"equipaje", fem:"false", clue:"♂" },
+      { word:"color", fem:"false", clue:"♂" }, { word:"árbol", fem:"false", clue:"♂" }, { word:"reloj", fem:"false", clue:"♂" },
+      { word:"amor", fem:"false", clue:"♂" }, { word:"mes", fem:"false", clue:"♂" }, { word:"papel", fem:"false", clue:"♂" },
+      { word:"puente", fem:"false", clue:"♂" }
+    ];
+
+    const shuffledPool = [...hardPool].sort(()=> Math.random() - 0.5);
+    freeCells.forEach((cell, i)=>{
+      const item = shuffledPool[i % shuffledPool.length];
+      cell.textContent = item.word;
+      cell.dataset.word = item.word;
+      cell.dataset.fem = item.fem;
+      cell.dataset.clue = item.clue;
+    });
+
+    protectedCells.forEach(cell=>{
+      const step = mazeSolution.find(s => String(s.row) === cell.dataset.row && String(s.col) === cell.dataset.col);
+      if(step){
+        cell.textContent = step.word;
+        cell.dataset.word = step.word;
+        cell.dataset.fem = "true";
+        cell.dataset.clue = "♀";
+      }
+    });
+  }
+
+  function isNeighbor(prev, next){
+    const dr = Math.abs(Number(prev.row) - Number(next.row));
+    const dc = Math.abs(Number(prev.col) - Number(next.col));
+    return (dr <= 1 && dc <= 1 && (dr + dc) > 0);
+  }
+
+  mazeCells.forEach(cell=>{
+    cell.addEventListener("click", ()=>{
+      const expected = mazeSolution[mazeStep + 1];
+      if(!expected) return;
+
+      const prev = mazeSolution[mazeStep];
+      const clicked = { row:Number(cell.dataset.row), col:Number(cell.dataset.col), word:cell.dataset.word };
+
+      if(!isNeighbor(prev, clicked)){
+        mazeMsg.textContent = "Essa palavra não encosta na trilha atual. Escolha uma casa vizinha.";
+        cell.classList.add("wrong");
+        setTimeout(()=> cell.classList.remove("wrong"), 500);
+        return;
+      }
+
+      const clickedKey = `${clicked.row}-${clicked.col}`;
+      const looksTempting = mazeDecoyNeighbors.has(clickedKey) && cell.dataset.fem === "true";
+      const correct = clicked.row === expected.row && clicked.col === expected.col && cell.dataset.fem === "true";
+
+      if(correct){
+        mazeStep++;
+        cell.classList.add("selected", "locked");
+        cell.dataset.step = String(mazeStep + 1);
+        mazeMsg.textContent = mazeStep === mazeSolution.length - 1
+          ? "¡Excelente! Chegaste à LLEGADA seguindo somente a rota feminina correta."
+          : `Muito bem. Agora procure a próxima palavra feminina vizinha. Passo ${mazeStep + 1}/${mazeSolution.length}.`;
+
+        if(mazeStep === mazeSolution.length - 1){
+          if(mazeDoneMsg) mazeDoneMsg.style.display = "block";
+          setFalangePageComplete(1, true);
+        }
+      }else{
+        cell.classList.add("wrong");
+        mazeMsg.textContent = looksTempting
+          ? "Essa palavra é feminina, mas é uma armadilha fora da rota. O labirinto vai reiniciar."
+          : "Palavra errada: observe gênero e exceções. O labirinto vai reiniciar.";
+        setTimeout(()=> resetMaze(true), 900);
+      }
+    });
+  });
+
+  if(mazeResetBtn){
+    mazeResetBtn.addEventListener("click", ()=> resetMaze(true));
+  }
+  resetMaze(false);
+  /* =========================================================
+     [FIM] 4) LABIRINTO INTERATIVO — PÁGINA 1
+  ========================================================== */
+
+/* =========================================================
+   [INÍCIO] MINI DUCK HUNT DE PALABRAS MASCULINAS
+   - 10 rondas
+   - vários balões por ronda
+   - apenas 1 palavra masculina correta por vez
+   - acertou masculina = estoura + pontua + próxima ronda
+   - acertou feminina = estoura + cachorro ri + reinicia
+   - clicou fora = reinicia
+   - 10s sem disparo = todos estouram + reinicia
+========================================================== */
+(function(){
+  const duckGame = $("#duckGame");
+  if(!duckGame) return;
+
+  const duckRoundEl = $("#duckRound");
+  const duckFoundEl = $("#duckFound");
+  const duckHitsEl = $("#duckHits");
+  const duckMissesEl = $("#duckMisses");
+  const duckMsg = $("#duckMsg");
+  const duckDoneMsg = $("#duckDoneMsg");
+  const duckStartBtn = $("#duckStartBtn");
+  const duckRestartBtn = $("#duckRestartBtn");
+  const duckDogLaugh = $("#duckDogLaugh");
+  const duckDogBubble = $("#duckDogBubble");
+  const duckCrosshair = $("#duckCrosshair");
+  const duckBushLeft = $("#duckBushLeft");
+  const duckBushCenter = $("#duckBushCenter");
+  const duckBushRight = $("#duckBushRight");
+
+  const duckBalloons = ["A","B","C","D","E","F","G","H","I","J","K","L"].map(letter => ({
+    btn: $("#duckBalloon" + letter),
+    label: $("#duckBalloon" + letter + "Label")
+  })).filter(item => item.btn && item.label);
+
+  const duckRounds = [
+    { m:"libro",      f:["mesa", "casa", "luna", "silla", "camisa", "radio", "mano", "calle", "voz", "noche", "playa", "escuela", "ciudad"] },
+    { m:"carro",      f:["ventana", "puerta", "pelota", "escuela", "manzana", "flor", "estrella", "foto", "radio", "calle", "clase", "salud", "luz"] },
+    { m:"avión",      f:["flor", "estrella", "foto", "radio", "calle", "mesa", "silla", "nube", "montaña", "tierra", "mujer", "libertad", "verdad"] },
+    { m:"perro",      f:["gata", "reina", "madre", "playa", "mochila", "ventana", "puerta", "camisa", "casa", "luna", "noche", "voz", "salud"] },
+    { m:"zapato",     f:["ciudad", "verdad", "libertad", "canción", "televisión", "universidad", "nación", "educación", "clase", "calle", "foto", "mano", "radio"] },
+    { m:"reloj",      f:["noche", "clase", "voz", "salud", "luz", "flor", "mujer", "calle", "universidad", "mesa", "silla", "ventana", "puerta"] },
+    { m:"sombrero",   f:["mano", "foto", "radio", "moto", "música", "canción", "televisión", "libertad", "verdad", "ciudad", "escuela", "playa", "camisa"] },
+    { m:"árbol",      f:["flor", "mujer", "calle", "universidad", "mesa", "luna", "casa", "silla", "puerta", "ventana", "foto", "radio", "mano"] },
+    { m:"teléfono",   f:["cocina", "ventana", "silla", "computadora", "mochila", "escuela", "pelota", "manzana", "camisa", "noche", "voz", "salud", "luz"] },
+    { m:"niño",       f:["niña", "abuela", "profesora", "amiga", "hermana", "madre", "mujer", "reina", "gata", "estudiante", "compañera", "vecina", "prima"] }
+  ];
+
+  const duckBalloonColors = [
+    ["#ff6b81", "#e84362"], ["#3aa0e6", "#1464c8"], ["#f4c542", "#f39c12"],
+    ["#2ecc71", "#149c52"], ["#9b59b6", "#6c2a91"], ["#ff8a3d", "#e85d04"],
+    ["#00d2d3", "#0984a3"], ["#ff5fc8", "#c2187a"], ["#a3e635", "#65a30d"],
+    ["#60a5fa", "#2563eb"], ["#f87171", "#dc2626"], ["#c084fc", "#7e22ce"]
+  ];
+
+  const duckState = {
+    started:false,
+    lock:false,
+    round:0,
+    points:0,
+    misses:0,
+    raf:null,
+    timeoutId:null,
+    nextId:null,
+    roundData:null,
+    roundStartTs:0,
+    roundDuration:12000
+  };
+
+  function shuffleArray(arr){
+    const copy = [...arr];
+    for(let i = copy.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function updateDuckHud(){
+    duckRoundEl.textContent = duckState.round;
+    duckHitsEl.textContent = duckState.points;
+    duckMissesEl.textContent = duckState.misses;
+    duckFoundEl.textContent = duckState.started ? "Jugando" : "Listo";
+  }
+
+  function clearDuckTimers(){
+    cancelAnimationFrame(duckState.raf);
+    clearTimeout(duckState.timeoutId);
+    clearTimeout(duckState.nextId);
+    duckState.raf = null;
+    duckState.timeoutId = null;
+    duckState.nextId = null;
+  }
+
+  function showDuckBubble(text, laugh=false){
+    duckDogBubble.textContent = text;
+    duckDogBubble.classList.add("show");
+    duckDogLaugh.style.display = laugh ? "block" : "none";
+
+    const duckLaughAudio = document.getElementById("duckLaughAudio");
+    if(laugh && duckLaughAudio){
+      try{
+        duckLaughAudio.currentTime = 0;
+        duckLaughAudio.play();
+      }catch(e){}
+    }
+  }
+
+  function hideDuckBubble(){
+    duckDogBubble.classList.remove("show");
+    duckDogLaugh.style.display = "none";
+  }
+
+  function resetBalloon(btn){
+    btn.classList.remove("pop");
+    btn.style.display = "none";
+    btn.dataset.gender = "";
+  }
+
+  function hideAllBalloons(){
+    duckBalloons.forEach(item => resetBalloon(item.btn));
+  }
+
+  function placeBushes(){
+    const gw = duckGame.clientWidth;
+    duckBushLeft.style.left = `${gw * 0.07}px`;
+    duckBushLeft.style.bottom = `18px`;
+    duckBushCenter.style.left = `${gw * 0.38}px`;
+    duckBushCenter.style.bottom = `24px`;
+    duckBushRight.style.left = `${gw * 0.69}px`;
+    duckBushRight.style.bottom = `18px`;
+  }
+
+  function setBalloonPosition(btn, x, y){
+    btn.style.left = `${x}%`;
+    btn.style.top = `${y}%`;
+  }
+
+  function popBalloon(btn){
+    btn.classList.remove("pop");
+    void btn.offsetWidth;
+    btn.classList.add("pop");
+  }
+
+  function popAllBalloons(){
+    duckBalloons.forEach(item => popBalloon(item.btn));
+  }
+
+  function resetDuckGameState(showDefaultMessage=true){
+    clearDuckTimers();
+    duckState.started = false;
+    duckState.lock = false;
+    duckState.round = 0;
+    duckState.points = 0;
+    duckState.misses = 0;
+    duckState.roundData = null;
+    duckState.roundStartTs = 0;
+
+    hideAllBalloons();
+    hideDuckBubble();
+    duckDoneMsg.style.display = "none";
+    setFalangePageComplete(2, false);
+
+    if(showDefaultMessage){
+      duckMsg.textContent = "Pulsa INICIAR JUEGO para empezar.";
+    }
+
+    updateDuckHud();
+  }
+
+  function finishDuckGame(){
+    clearDuckTimers();
+    duckState.started = false;
+    duckState.lock = true;
+    hideAllBalloons();
+    hideDuckBubble();
+    duckDoneMsg.style.display = "block";
+    duckMsg.textContent = "ACTIVIDAD CONCLUIDA — Duck Hunt completado con éxito.";
+    duckFoundEl.textContent = "Concluido";
+    setFalangePageComplete(2, true);
+  }
+
+  function buildRoundData(round){
+    const femaleWords = shuffleArray(round.f).slice(0, duckBalloons.length - 1);
+    const words = shuffleArray([
+      { word:round.m, gender:"M" },
+      ...femaleWords.map(word => ({ word, gender:"F" }))
+    ]);
+
+    const columns = 6;
+    const gapX = 16;
+    const startX = 10;
+
+    return words.map((item, index) => {
+      const row = Math.floor(index / columns);
+      const col = index % columns;
+      const color = duckBalloonColors[index % duckBalloonColors.length];
+      return {
+        ...item,
+        x: startX + col * gapX + (Math.random() * 2.4 - 1.2),
+        startY: 112 + row * 16 + Math.random() * 8,
+        endY: 12 + row * 10 + Math.random() * 8,
+        sway: 1.6 + Math.random() * 2.0,
+        phase: Math.random() * Math.PI * 2,
+        colorA: color[0],
+        colorB: color[1],
+        btn: duckBalloons[index].btn,
+        label: duckBalloons[index].label
+      };
+    });
+  }
+
+  function renderRound(){
+    hideAllBalloons();
+
+    duckState.roundData.forEach(item => {
+      item.label.textContent = item.word;
+      item.btn.dataset.gender = item.gender;
+      item.btn.style.setProperty("--balloonGrad", `linear-gradient(180deg, ${item.colorA}, ${item.colorB})`);
+      item.btn.style.setProperty("--balloonKnot", item.colorB);
+      item.btn.classList.remove("pop");
+      item.btn.style.display = "block";
+      setBalloonPosition(item.btn, item.x, item.startY);
+    });
+  }
+
+  function animateRound(now){
+    if(!duckState.started || duckState.lock || !duckState.roundData) return;
+
+    const elapsed = now - duckState.roundStartTs;
+    const progress = Math.min(elapsed / duckState.roundDuration, 1);
+    const eased = 1 - Math.pow(1 - progress, 2.2);
+
+    duckState.roundData.forEach(item => {
+      const y = item.startY + (item.endY - item.startY) * eased;
+      const drift = Math.sin(progress * Math.PI * 2 + item.phase) * item.sway;
+      setBalloonPosition(item.btn, item.x + drift, y);
+    });
+
+    if(progress < 1){
+      duckState.raf = requestAnimationFrame(animateRound);
+    }
+  }
+
+  function scheduleRoundTimeout(){
+    duckState.timeoutId = setTimeout(()=>{
+      if(!duckState.started || duckState.lock) return;
+
+      duckState.lock = true;
+      duckState.misses++;
+      updateDuckHud();
+      popAllBalloons();
+      showDuckBubble("¡Ja, ja, ja!", true);
+      duckMsg.textContent = "Tiempo agotado. Todos los globos explotaron y el juego vuelve al inicio.";
+
+      duckState.nextId = setTimeout(()=>{
+        resetDuckGameState(true);
+      }, 950);
+    }, duckState.roundDuration);
+  }
+
+  function startRound(){
+    if(duckState.round >= duckRounds.length){
+      finishDuckGame();
+      return;
+    }
+
+    clearDuckTimers();
+    hideDuckBubble();
+    duckState.lock = false;
+    duckState.round++;
+    duckState.roundData = buildRoundData(duckRounds[duckState.round - 1]);
+    renderRound();
+    duckState.roundStartTs = performance.now();
+    updateDuckHud();
+    duckMsg.textContent = `Ronda ${duckState.round}/10: aparecerán 12 globos coloridos. Solo 1 es masculino.`;
+    scheduleRoundTimeout();
+    duckState.raf = requestAnimationFrame(animateRound);
+  }
+
+  function goToNextRound(){
+    clearDuckTimers();
+    hideAllBalloons();
+    if(duckState.started){
+      startRound();
+    }
+  }
+
+  function failAndReset(message, popTarget=null){
+    clearDuckTimers();
+    duckState.lock = true;
+    duckState.misses++;
+    updateDuckHud();
+
+    if(popTarget === "all"){
+      popAllBalloons();
+    }else if(popTarget){
+      popBalloon(popTarget);
+    }
+
+    showDuckBubble("¡Ja, ja, ja!", true);
+    duckMsg.textContent = message;
+
+    duckState.nextId = setTimeout(()=>{
+      resetDuckGameState(true);
+    }, 1000);
+  }
+
+  function handleBalloonClick(e){
+    e.stopPropagation();
+    if(!duckState.started || duckState.lock) return;
+
+    const btn = e.currentTarget;
+    const gender = btn.dataset.gender;
+
+    if(gender === "M"){
+      clearDuckTimers();
+      duckState.lock = true;
+      duckState.points += 10;
+      updateDuckHud();
+      popBalloon(btn);
+      showDuckBubble("¡Parabéns!", false);
+      duckMsg.textContent = "¡Parabéns! Acertaste el único globo masculino y ganaste 10 puntos.";
+
+      duckState.nextId = setTimeout(()=>{
+        goToNextRound();
+      }, 520);
+    }else{
+      failAndReset("Error. Ese globo tiene palabra femenina. El juego vuelve al inicio.", btn);
+    }
+  }
+
+  duckBalloons.forEach(item => item.btn.addEventListener("click", handleBalloonClick));
+
+  duckGame.addEventListener("click", (e)=>{
+    if(!duckState.started || duckState.lock) return;
+    if(e.target.closest(".duckBalloon")) return;
+    failAndReset("Fallaste el disparo. El juego vuelve al inicio.");
+  });
+
+  duckGame.addEventListener("mousemove", (e)=>{
+    const rect = duckGame.getBoundingClientRect();
+    duckCrosshair.style.display = "block";
+    duckCrosshair.style.left = `${e.clientX - rect.left}px`;
+    duckCrosshair.style.top = `${e.clientY - rect.top}px`;
+  });
+
+  duckGame.addEventListener("mouseenter", ()=>{
+    duckCrosshair.style.display = "block";
+  });
+
+  duckGame.addEventListener("mouseleave", ()=>{
+    duckCrosshair.style.display = "none";
+  });
+
+  duckStartBtn.addEventListener("click", ()=>{
+    resetDuckGameState(false);
+    duckState.started = true;
+    duckMsg.textContent = "Preparando ronda 1...";
+    updateDuckHud();
+    startRound();
+  });
+
+  duckRestartBtn.addEventListener("click", ()=>{
+    resetDuckGameState(true);
+  });
+
+  window.addEventListener("resize", placeBushes);
+
+  placeBushes();
+  resetDuckGameState(true);
+})();
+/* =========================================================
+   [FIM] MINI DUCK HUNT DE PALABRAS MASCULINAS
+========================================================== */
+
+ 
+/* =========================================================
+   [INÍCIO] JS — TETRIS PÁGINA 3
+========================================================== */
+(function(){
+  'use strict';
+
+  /* =======================================================
+     [INÍCIO] ELEMENTOS
+  ======================================================== */
+  const canvas = document.getElementById('tetrisCanvas');
+  if(!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+
+  const scoreEl = document.getElementById('tetrisScore');
+  const levelEl = document.getElementById('tetrisLevel');
+  const missionEl = document.getElementById('tetrisMission');
+  const currentWordEl = document.getElementById('tetrisCurrentWord');
+  const currentTypeEl = document.getElementById('tetrisCurrentType');
+  const currentPairEl = document.getElementById('tetrisCurrentPair');
+  const feedbackEl = document.getElementById('tetrisFeedback');
+  const exampleSingularEl = document.getElementById('tetrisExampleSingular');
+  const examplePluralEl = document.getElementById('tetrisExamplePlural');
+  const progressFillEl = document.getElementById('tetrisProgressFill');
+  const progressTextEl = document.getElementById('tetrisProgressText');
+  const finalScoreTextEl = document.getElementById('tetrisFinalScoreText');
+
+  const startOverlay = document.getElementById('tetrisStartOverlay');
+  const winOverlay = document.getElementById('tetrisWinOverlay');
+  const gameOverOverlay = document.getElementById('tetrisGameOverOverlay');
+
+  const startBtn = document.getElementById('tetrisStartBtn');
+  const continueBtn = document.getElementById('tetrisContinueBtn');
+  const restartBtn = document.getElementById('tetrisRestartBtn');
+
+  const btnLeft = document.getElementById('tetrisBtnLeft');
+  const btnRotate = document.getElementById('tetrisBtnRotate');
+  const btnDown = document.getElementById('tetrisBtnDown');
+  const btnRight = document.getElementById('tetrisBtnRight');
+  const btnDrop = document.getElementById('tetrisBtnDrop');
+  /* =======================================================
+     [FIM] ELEMENTOS
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] CONFIGURAÇÕES
+  ======================================================== */
+  const ROWS = 16;
+  const COLS = 8;
+  const BLOCK = 36;
+  const TARGET_SCORE = 5000;
+
+  canvas.width = COLS * BLOCK;
+  canvas.height = ROWS * BLOCK;
+
+  const COLORS = {
+    bg: '#172033',
+    grid: 'rgba(255,255,255,0.08)',
+    stroke: '#0f172a',
+    highlight: 'rgba(255,255,255,.18)',
+    text: '#ffffff',
+    sg: '#fbcfe8',
+    pl: '#a5f3fc'
+  };
+
+  const PIECES = [
+    [[1,1],[1,1]],
+    [[1,1,1,1]],
+    [[0,1,0],[1,1,1]],
+    [[1,1,0],[0,1,1]],
+    [[0,1,1],[1,1,0]]
+  ];
+  /* =======================================================
+     [FIM] CONFIGURAÇÕES
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] BANCO DE PALAVRAS
+  ======================================================== */
+    const dictionary = [
+    { base:'perro', singular:'perro', plural:'perros', type:'Singular', color:'#ef4444', text:'perro' },
+    { base:'perro', singular:'perro', plural:'perros', type:'Plural',   color:'#ef4444', text:'perros' },
+
+    { base:'casa', singular:'casa', plural:'casas', type:'Singular', color:'#3b82f6', text:'casa' },
+    { base:'casa', singular:'casa', plural:'casas', type:'Plural',   color:'#3b82f6', text:'casas' },
+
+    { base:'flor', singular:'flor', plural:'flores', type:'Singular', color:'#22c55e', text:'flor' },
+    { base:'flor', singular:'flor', plural:'flores', type:'Plural',   color:'#22c55e', text:'flores' },
+
+    { base:'niño', singular:'niño', plural:'niños', type:'Singular', color:'#f97316', text:'niño' },
+    { base:'niño', singular:'niño', plural:'niños', type:'Plural',   color:'#f97316', text:'niños' },
+
+    { base:'niña', singular:'niña', plural:'niñas', type:'Singular', color:'#ec4899', text:'niña' },
+    { base:'niña', singular:'niña', plural:'niñas', type:'Plural',   color:'#ec4899', text:'niñas' },
+
+    { base:'luz', singular:'luz', plural:'luces', type:'Singular', color:'#facc15', text:'luz' },
+    { base:'luz', singular:'luz', plural:'luces', type:'Plural',   color:'#facc15', text:'luces' },
+
+    { base:'papel', singular:'papel', plural:'papeles', type:'Singular', color:'#8b5cf6', text:'papel' },
+    { base:'papel', singular:'papel', plural:'papeles', type:'Plural',   color:'#8b5cf6', text:'papeles' },
+
+    { base:'ciudad', singular:'ciudad', plural:'ciudades', type:'Singular', color:'#14b8a6', text:'ciudad' },
+    { base:'ciudad', singular:'ciudad', plural:'ciudades', type:'Plural',   color:'#14b8a6', text:'ciudades' },
+
+    { base:'animal', singular:'animal', plural:'animales', type:'Singular', color:'#0ea5e9', text:'animal' },
+    { base:'animal', singular:'animal', plural:'animales', type:'Plural',   color:'#0ea5e9', text:'animales' },
+
+    { base:'doctor', singular:'doctor', plural:'doctores', type:'Singular', color:'#64748b', text:'doctor' },
+    { base:'doctor', singular:'doctor', plural:'doctores', type:'Plural',   color:'#64748b', text:'doctores' },
+
+    { base:'joven', singular:'joven', plural:'jóvenes', type:'Singular', color:'#06b6d4', text:'joven' },
+    { base:'joven', singular:'joven', plural:'jóvenes', type:'Plural',   color:'#06b6d4', text:'jóvenes' },
+
+    { base:'árbol', singular:'árbol', plural:'árboles', type:'Singular', color:'#16a34a', text:'árbol' },
+    { base:'árbol', singular:'árbol', plural:'árboles', type:'Plural',   color:'#16a34a', text:'árboles' },
+
+    { base:'reloj', singular:'reloj', plural:'relojes', type:'Singular', color:'#f59e0b', text:'reloj' },
+    { base:'reloj', singular:'reloj', plural:'relojes', type:'Plural',   color:'#f59e0b', text:'relojes' },
+
+    { base:'mujer', singular:'mujer', plural:'mujeres', type:'Singular', color:'#d946ef', text:'mujer' },
+    { base:'mujer', singular:'mujer', plural:'mujeres', type:'Plural',   color:'#d946ef', text:'mujeres' },
+
+    { base:'libro', singular:'libro', plural:'libros', type:'Singular', color:'#2563eb', text:'libro' },
+    { base:'libro', singular:'libro', plural:'libros', type:'Plural',   color:'#2563eb', text:'libros' },
+
+    { base:'mesa', singular:'mesa', plural:'mesas', type:'Singular', color:'#db2777', text:'mesa' },
+    { base:'mesa', singular:'mesa', plural:'mesas', type:'Plural',   color:'#db2777', text:'mesas' },
+
+    { base:'canción', singular:'canción', plural:'canciones', type:'Singular', color:'#9333ea', text:'canción' },
+    { base:'canción', singular:'canción', plural:'canciones', type:'Plural',   color:'#9333ea', text:'canciones' },
+
+    { base:'profesor', singular:'profesor', plural:'profesores', type:'Singular', color:'#475569', text:'profesor' },
+    { base:'profesor', singular:'profesor', plural:'profesores', type:'Plural',   color:'#475569', text:'profesores' },
+
+    { base:'profesora', singular:'profesora', plural:'profesoras', type:'Singular', color:'#be185d', text:'profesora' },
+    { base:'profesora', singular:'profesora', plural:'profesoras', type:'Plural',   color:'#be185d', text:'profesoras' },
+
+    { base:'estudiante', singular:'estudiante', plural:'estudiantes', type:'Singular', color:'#0891b2', text:'estudiante' },
+    { base:'estudiante', singular:'estudiante', plural:'estudiantes', type:'Plural',   color:'#0891b2', text:'estudiantes' },
+
+    { base:'amigo', singular:'amigo', plural:'amigos', type:'Singular', color:'#ea580c', text:'amigo' },
+    { base:'amigo', singular:'amigo', plural:'amigos', type:'Plural',   color:'#ea580c', text:'amigos' },
+
+    { base:'amiga', singular:'amiga', plural:'amigas', type:'Singular', color:'#e11d48', text:'amiga' },
+    { base:'amiga', singular:'amiga', plural:'amigas', type:'Plural',   color:'#e11d48', text:'amigas' },
+
+    { base:'escuela', singular:'escuela', plural:'escuelas', type:'Singular', color:'#0d9488', text:'escuela' },
+    { base:'escuela', singular:'escuela', plural:'escuelas', type:'Plural',   color:'#0d9488', text:'escuelas' },
+
+    { base:'ventana', singular:'ventana', plural:'ventanas', type:'Singular', color:'#65a30d', text:'ventana' },
+    { base:'ventana', singular:'ventana', plural:'ventanas', type:'Plural',   color:'#65a30d', text:'ventanas' },
+
+    { base:'puerta', singular:'puerta', plural:'puertas', type:'Singular', color:'#84cc16', text:'puerta' },
+    { base:'puerta', singular:'puerta', plural:'puertas', type:'Plural',   color:'#84cc16', text:'puertas' },
+
+    { base:'zapato', singular:'zapato', plural:'zapatos', type:'Singular', color:'#a16207', text:'zapato' },
+    { base:'zapato', singular:'zapato', plural:'zapatos', type:'Plural',   color:'#a16207', text:'zapatos' },
+
+    { base:'camisa', singular:'camisa', plural:'camisas', type:'Singular', color:'#f43f5e', text:'camisa' },
+    { base:'camisa', singular:'camisa', plural:'camisas', type:'Plural',   color:'#f43f5e', text:'camisas' },
+
+    { base:'calle', singular:'calle', plural:'calles', type:'Singular', color:'#0284c7', text:'calle' },
+    { base:'calle', singular:'calle', plural:'calles', type:'Plural',   color:'#0284c7', text:'calles' },
+
+    { base:'noche', singular:'noche', plural:'noches', type:'Singular', color:'#4f46e5', text:'noche' },
+    { base:'noche', singular:'noche', plural:'noches', type:'Plural',   color:'#4f46e5', text:'noches' },
+
+    { base:'país', singular:'país', plural:'países', type:'Singular', color:'#7c3aed', text:'país' },
+    { base:'país', singular:'país', plural:'países', type:'Plural',   color:'#7c3aed', text:'países' },
+
+    { base:'pez', singular:'pez', plural:'peces', type:'Singular', color:'#0f766e', text:'pez' },
+    { base:'pez', singular:'pez', plural:'peces', type:'Plural',   color:'#0f766e', text:'peces' },
+
+    { base:'voz', singular:'voz', plural:'voces', type:'Singular', color:'#ca8a04', text:'voz' },
+    { base:'voz', singular:'voz', plural:'voces', type:'Plural',   color:'#ca8a04', text:'voces' },
+
+    { base:'lápiz', singular:'lápiz', plural:'lápices', type:'Singular', color:'#dc2626', text:'lápiz' },
+    { base:'lápiz', singular:'lápiz', plural:'lápices', type:'Plural',   color:'#dc2626', text:'lápices' },
+
+    { base:'nariz', singular:'nariz', plural:'narices', type:'Singular', color:'#c026d3', text:'nariz' },
+    { base:'nariz', singular:'nariz', plural:'narices', type:'Plural',   color:'#c026d3', text:'narices' },
+
+    { base:'actriz', singular:'actriz', plural:'actrices', type:'Singular', color:'#db2777', text:'actriz' },
+    { base:'actriz', singular:'actriz', plural:'actrices', type:'Plural',   color:'#db2777', text:'actrices' },
+
+    { base:'león', singular:'león', plural:'leones', type:'Singular', color:'#d97706', text:'león' },
+    { base:'león', singular:'león', plural:'leones', type:'Plural',   color:'#d97706', text:'leones' },
+
+    { base:'corazón', singular:'corazón', plural:'corazones', type:'Singular', color:'#e11d48', text:'corazón' },
+    { base:'corazón', singular:'corazón', plural:'corazones', type:'Plural',   color:'#e11d48', text:'corazones' },
+
+    { base:'camión', singular:'camión', plural:'camiones', type:'Singular', color:'#0891b2', text:'camión' },
+    { base:'camión', singular:'camión', plural:'camiones', type:'Plural',   color:'#0891b2', text:'camiones' },
+
+    { base:'pan', singular:'pan', plural:'panes', type:'Singular', color:'#92400e', text:'pan' },
+    { base:'pan', singular:'pan', plural:'panes', type:'Plural',   color:'#92400e', text:'panes' },
+
+    { base:'tren', singular:'tren', plural:'trenes', type:'Singular', color:'#334155', text:'tren' },
+    { base:'tren', singular:'tren', plural:'trenes', type:'Plural',   color:'#334155', text:'trenes' },
+
+    { base:'mar', singular:'mar', plural:'mares', type:'Singular', color:'#0369a1', text:'mar' },
+    { base:'mar', singular:'mar', plural:'mares', type:'Plural',   color:'#0369a1', text:'mares' },
+
+    { base:'mes', singular:'mes', plural:'meses', type:'Singular', color:'#7f1d1d', text:'mes' },
+    { base:'mes', singular:'mes', plural:'meses', type:'Plural',   color:'#7f1d1d', text:'meses' },
+
+    { base:'rey', singular:'rey', plural:'reyes', type:'Singular', color:'#b45309', text:'rey' },
+    { base:'rey', singular:'rey', plural:'reyes', type:'Plural',   color:'#b45309', text:'reyes' },
+
+    { base:'ley', singular:'ley', plural:'leyes', type:'Singular', color:'#a21caf', text:'ley' },
+    { base:'ley', singular:'ley', plural:'leyes', type:'Plural',   color:'#a21caf', text:'leyes' },
+
+    { base:'mano', singular:'mano', plural:'manos', type:'Singular', color:'#f97316', text:'mano' },
+    { base:'mano', singular:'mano', plural:'manos', type:'Plural',   color:'#f97316', text:'manos' },
+
+    { base:'foto', singular:'foto', plural:'fotos', type:'Singular', color:'#7c2d12', text:'foto' },
+    { base:'foto', singular:'foto', plural:'fotos', type:'Plural',   color:'#7c2d12', text:'fotos' },
+
+    { base:'radio', singular:'radio', plural:'radios', type:'Singular', color:'#0369a1', text:'radio' },
+    { base:'radio', singular:'radio', plural:'radios', type:'Plural',   color:'#0369a1', text:'radios' },
+
+    { base:'mapa', singular:'mapa', plural:'mapas', type:'Singular', color:'#15803d', text:'mapa' },
+    { base:'mapa', singular:'mapa', plural:'mapas', type:'Plural',   color:'#15803d', text:'mapas' },
+
+    { base:'problema', singular:'problema', plural:'problemas', type:'Singular', color:'#1d4ed8', text:'problema' },
+    { base:'problema', singular:'problema', plural:'problemas', type:'Plural',   color:'#1d4ed8', text:'problemas' },
+
+    { base:'idioma', singular:'idioma', plural:'idiomas', type:'Singular', color:'#6d28d9', text:'idioma' },
+    { base:'idioma', singular:'idioma', plural:'idiomas', type:'Plural',   color:'#6d28d9', text:'idiomas' },
+
+    { base:'clima', singular:'clima', plural:'climas', type:'Singular', color:'#047857', text:'clima' },
+    { base:'clima', singular:'clima', plural:'climas', type:'Plural',   color:'#047857', text:'climas' },
+
+    { base:'día', singular:'día', plural:'días', type:'Singular', color:'#f59e0b', text:'día' },
+    { base:'día', singular:'día', plural:'días', type:'Plural',   color:'#f59e0b', text:'días' },
+
+    { base:'tema', singular:'tema', plural:'temas', type:'Singular', color:'#be123c', text:'tema' },
+    { base:'tema', singular:'tema', plural:'temas', type:'Plural',   color:'#be123c', text:'temas' },
+
+    { base:'sistema', singular:'sistema', plural:'sistemas', type:'Singular', color:'#0369a1', text:'sistema' },
+    { base:'sistema', singular:'sistema', plural:'sistemas', type:'Plural',   color:'#0369a1', text:'sistemas' }
+  ];
+  /* =======================================================
+     [FIM] BANCO DE PALAVRAS
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] ESTADO
+  ======================================================== */
+  let board = [];
+  let score = 0;
+  let level = 1;
+  let gameRunning = false;
+  let gameEnded = false;
+  let animationId = null;
+  let lastTime = 0;
+  let dropCounter = 0;
+  let dropInterval = 1200;
+  let currentMission = 'Plural';
+
+  let player = {
+    pos: { x: 0, y: 0 },
+    matrix: null,
+    wordData: null
+  };
+  /* =======================================================
+     [FIM] ESTADO
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] ÁUDIO
+  ======================================================== */
+  let audioCtx = null;
+
+  function getAudioCtx(){
+    if(!audioCtx){
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if(Ctx){
+        audioCtx = new Ctx();
+      }
+    }
+    return audioCtx;
+  }
+
+  function beep(freq, duration, type, volume){
+    const ac = getAudioCtx();
+    if(!ac) return;
+
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+
+    osc.type = type || 'square';
+    osc.frequency.value = freq || 440;
+
+    gain.gain.value = volume || 0.03;
+    gain.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + (duration || 0.08));
+
+    osc.connect(gain);
+    gain.connect(ac.destination);
+
+    osc.start();
+    osc.stop(ac.currentTime + (duration || 0.08));
+  }
+
+  function soundMove(){ beep(320, 0.03, 'square', 0.02); }
+  function soundRotate(){ beep(520, 0.05, 'triangle', 0.025); }
+  function soundDrop(){ beep(200, 0.05, 'square', 0.025); }
+  function soundLine(){ beep(660, 0.08, 'triangle', 0.04); setTimeout(()=>beep(880,0.08,'triangle',0.035), 60); }
+  function soundWin(){ beep(784, 0.08, 'triangle', 0.04); setTimeout(()=>beep(988,0.1,'triangle',0.04), 90); setTimeout(()=>beep(1175,0.12,'triangle',0.04), 180); }
+  function soundGameOver(){ beep(240, 0.12, 'sawtooth', 0.035); setTimeout(()=>beep(180,0.18,'sawtooth',0.03), 120); }
+  /* =======================================================
+     [FIM] ÁUDIO
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] FUNÇÕES BÁSICAS
+  ======================================================== */
+  function createEmptyBoard(){
+    return Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+  }
+
+  function rand(arr){
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function chooseMission(){
+    currentMission = Math.random() > 0.5 ? 'Singular' : 'Plural';
+    if(missionEl) missionEl.textContent = `Forma una línea con ${currentMission.toUpperCase()}`;
+  }
+
+  function setFeedback(msg, tone){
+    feedbackEl.textContent = msg;
+    if(tone === 'good'){
+      feedbackEl.style.color = '#15803d';
+    }else if(tone === 'warn'){
+      feedbackEl.style.color = '#b45309';
+    }else{
+      feedbackEl.style.color = '#0f172a';
+    }
+  }
+
+  function updateProgress(){
+    const safeScore = Math.min(score, TARGET_SCORE);
+    const pct = Math.max(0, Math.min(100, (safeScore / TARGET_SCORE) * 100));
+    progressFillEl.style.width = pct + '%';
+    progressTextEl.textContent = `${score} / ${TARGET_SCORE}`;
+  }
+
+  function updateWordPanel(wordData){
+    currentWordEl.textContent = wordData.text;
+    currentTypeEl.textContent = wordData.type;
+    currentPairEl.textContent = `Par: ${wordData.singular} → ${wordData.plural}`;
+    exampleSingularEl.textContent = wordData.singular;
+    examplePluralEl.textContent = wordData.plural;
+  }
+
+  function updateScore(){
+    scoreEl.textContent = score;
+    level = Math.floor(score / 250) + 1;
+    levelEl.textContent = level;
+    dropInterval = Math.max(450, 1200 - ((level - 1) * 70));
+    updateProgress();
+
+    if(score >= TARGET_SCORE && !gameEnded){
+      winGame();
+    }
+  }
+  /* =======================================================
+     [FIM] FUNÇÕES BÁSICAS
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] PEÇA
+  ======================================================== */
+  function createPiece(){
+    return {
+      matrix: JSON.parse(JSON.stringify(rand(PIECES))),
+      wordData: rand(dictionary)
+    };
+  }
+
+  function playerReset(){
+    const next = createPiece();
+
+    player.matrix = next.matrix;
+    player.wordData = next.wordData;
+    player.pos.y = 0;
+    player.pos.x = Math.floor((COLS - player.matrix[0].length) / 2);
+
+    updateWordPanel(player.wordData);
+
+    if(collide(board, player)){
+      loseGame();
+    }
+  }
+  /* =======================================================
+     [FIM] PEÇA
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] DESENHO
+  ======================================================== */
+  function draw(){
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawGrid();
+    drawBoard();
+    drawPlayer();
+  }
+
+  function drawGrid(){
+    ctx.strokeStyle = COLORS.grid;
+    ctx.lineWidth = 1;
+
+    for(let x = 0; x <= COLS; x++){
+      ctx.beginPath();
+      ctx.moveTo(x * BLOCK, 0);
+      ctx.lineTo(x * BLOCK, canvas.height);
+      ctx.stroke();
+    }
+
+    for(let y = 0; y <= ROWS; y++){
+      ctx.beginPath();
+      ctx.moveTo(0, y * BLOCK);
+      ctx.lineTo(canvas.width, y * BLOCK);
+      ctx.stroke();
+    }
+  }
+
+  function drawBoard(){
+    board.forEach((row, y) => {
+      row.forEach((cell, x) => {
+        if(cell !== 0){
+          drawBlock(x, y, cell.color, cell.word, cell.type);
+        }
+      });
+    });
+  }
+
+  function drawPlayer(){
+    if(!player.matrix || !player.wordData) return;
+
+    player.matrix.forEach((row, y) => {
+      row.forEach((value, x) => {
+        if(value){
+          drawBlock(
+            x + player.pos.x,
+            y + player.pos.y,
+            player.wordData.color,
+            player.wordData.text,
+            player.wordData.type
+          );
+        }
+      });
+    });
+  }
+
+  function drawBlock(x, y, color, word, type){
+    const px = x * BLOCK;
+    const py = y * BLOCK;
+
+    ctx.fillStyle = color;
+    ctx.fillRect(px, py, BLOCK, BLOCK);
+
+    ctx.fillStyle = COLORS.highlight;
+    ctx.fillRect(px + 2, py + 2, BLOCK - 4, 6);
+
+    ctx.strokeStyle = COLORS.stroke;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(px, py, BLOCK, BLOCK);
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    ctx.fillStyle = COLORS.text;
+    ctx.font = 'bold 10px Arial';
+    ctx.fillText(word.slice(0, 5), px + BLOCK / 2, py + BLOCK / 2 - 4);
+
+    ctx.font = 'bold 9px Arial';
+    ctx.fillStyle = type === 'Plural' ? COLORS.pl : COLORS.sg;
+    ctx.fillText(type === 'Plural' ? 'PL' : 'SG', px + BLOCK / 2, py + BLOCK - 8);
+  }
+  /* =======================================================
+     [FIM] DESENHO
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] COLISÃO / ROTAÇÃO / MESCLAGEM
+  ======================================================== */
+  function collide(boardRef, playerRef){
+    const m = playerRef.matrix;
+    const o = playerRef.pos;
+
+    for(let y = 0; y < m.length; y++){
+      for(let x = 0; x < m[y].length; x++){
+        if(
+          m[y][x] !== 0 &&
+          (
+            boardRef[y + o.y] === undefined ||
+            boardRef[y + o.y][x + o.x] === undefined ||
+            boardRef[y + o.y][x + o.x] !== 0
+          )
+        ){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  function merge(boardRef, playerRef){
+    playerRef.matrix.forEach((row, y) => {
+      row.forEach((value, x) => {
+        if(value !== 0){
+          boardRef[y + playerRef.pos.y][x + playerRef.pos.x] = {
+            color: playerRef.wordData.color,
+            word: playerRef.wordData.text,
+            type: playerRef.wordData.type,
+            singular: playerRef.wordData.singular,
+            plural: playerRef.wordData.plural
+          };
+        }
+      });
+    });
+  }
+
+  function rotate(matrix){
+    return matrix[0].map((_, i) => matrix.map(row => row[i]).reverse());
+  }
+  /* =======================================================
+     [FIM] COLISÃO / ROTAÇÃO / MESCLAGEM
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] MOVIMENTOS
+  ======================================================== */
+  function move(dir){
+    if(!gameRunning || gameEnded) return;
+    player.pos.x += dir;
+    if(collide(board, player)){
+      player.pos.x -= dir;
+      return;
+    }
+    soundMove();
+  }
+
+  function rotatePlayer(){
+    if(!gameRunning || gameEnded) return;
+
+    const prev = JSON.parse(JSON.stringify(player.matrix));
+    player.matrix = rotate(player.matrix);
+
+    if(collide(board, player)){
+      player.matrix = prev;
+      return;
+    }
+    soundRotate();
+  }
+
+  function drop(){
+    if(!gameRunning || gameEnded) return;
+
+    player.pos.y++;
+
+    if(collide(board, player)){
+      player.pos.y--;
+      merge(board, player);
+      soundDrop();
+      clearLines();
+      playerReset();
+      updateScore();
+    }
+
+    dropCounter = 0;
+  }
+
+  function hardDrop(){
+    if(!gameRunning || gameEnded) return;
+
+    while(!collide(board, player)){
+      player.pos.y++;
+    }
+    player.pos.y--;
+
+    merge(board, player);
+    soundDrop();
+    clearLines();
+    playerReset();
+    updateScore();
+    dropCounter = 0;
+  }
+  /* =======================================================
+     [FIM] MOVIMENTOS
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] LIMPEZA DE LINHAS
+  ======================================================== */
+  function clearLines(){
+    let rowCount = 1;
+    let cleared = false;
+
+    outer:
+    for(let y = ROWS - 1; y >= 0; y--){
+      for(let x = 0; x < COLS; x++){
+        if(board[y][x] === 0){
+          continue outer;
+        }
+      }
+
+      cleared = true;
+
+      const rowTypes = board[y].map(cell => cell.type);
+      const singularCount = rowTypes.filter(t => t === 'Singular').length;
+      const pluralCount = rowTypes.filter(t => t === 'Plural').length;
+      const dominantType = pluralCount > singularCount ? 'Plural' : 'Singular';
+
+      let multiplier = 1;
+
+      if(dominantType === currentMission){
+        multiplier = 2;
+        setFeedback(`¡Muy bien! La línea quedó más ${currentMission.toLowerCase()}.`, 'good');
+      } else {
+        setFeedback(`Línea limpia, pero la misión era ${currentMission.toLowerCase()}.`, 'warn');
+      }
+
+      const row = board.splice(y, 1)[0].fill(0);
+      board.unshift(row);
+      y++;
+
+      score += rowCount * 100 * multiplier;
+      rowCount *= 2;
+      soundLine();
+      chooseMission();
+    }
+
+    if(!cleared && player.wordData){
+      setFeedback(`Observa: ${player.wordData.singular} → ${player.wordData.plural}`, 'normal');
+    }
+  }
+  /* =======================================================
+     [FIM] LIMPEZA DE LINHAS
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] LOOP
+  ======================================================== */
+  function update(time = 0){
+    if(!gameRunning || gameEnded) return;
+
+    const delta = time - lastTime;
+    lastTime = time;
+    dropCounter += delta;
+
+    if(dropCounter > dropInterval){
+      drop();
+    }
+
+    draw();
+    animationId = requestAnimationFrame(update);
+  }
+  /* =======================================================
+     [FIM] LOOP
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] ESTADOS FINAIS
+  ======================================================== */
+  function show(el){ el.classList.remove('hidden'); }
+  function hide(el){ el.classList.add('hidden'); }
+
+  function unlockPageActivity(){
+    const page3 = document.getElementById('page3');
+    if(page3){
+      page3.dataset.completed = 'true';
+      page3.classList.add('activity-complete');
+    }
+
+    try{
+      window.page3Completed = true;
+      localStorage.setItem('falange_page3_tetris_completed', 'true');
+    }catch(e){}
+    setFalangePageComplete(3, true);
+  }
+
+  function winGame(){
+    gameEnded = true;
+    gameRunning = false;
+    cancelAnimationFrame(animationId);
+    updateScore();
+    soundWin();
+    unlockPageActivity();
+    show(winOverlay);
+  }
+
+  function loseGame(){
+    gameEnded = true;
+    gameRunning = false;
+    cancelAnimationFrame(animationId);
+    finalScoreTextEl.textContent = `Puntos: ${score}`;
+    soundGameOver();
+    show(gameOverOverlay);
+  }
+  /* =======================================================
+     [FIM] ESTADOS FINAIS
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] RESET / INÍCIO
+  ======================================================== */
+  function resetGame(){
+    board = createEmptyBoard();
+    score = 0;
+    level = 1;
+    gameEnded = false;
+    gameRunning = false;
+    dropCounter = 0;
+    lastTime = 0;
+    dropInterval = 1200;
+
+    hide(winOverlay);
+    hide(gameOverOverlay);
+
+    chooseMission();
+    updateScore();
+    setFeedback('Observe no painel lateral a palavra e seu plural antes de mover a peça.', 'normal');
+    playerReset();
+    draw();
+  }
+
+  function startGame(){
+    if(gameEnded){
+      resetGame();
+    }
+
+    const ac = getAudioCtx();
+    if(ac && ac.state === 'suspended'){
+      ac.resume();
+    }
+
+    hide(startOverlay);
+    hide(winOverlay);
+    hide(gameOverOverlay);
+
+    gameRunning = true;
+    gameEnded = false;
+    lastTime = 0;
+    cancelAnimationFrame(animationId);
+    animationId = requestAnimationFrame(update);
+  }
+  /* =======================================================
+     [FIM] RESET / INÍCIO
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] EVENTOS
+  ======================================================== */
+  document.addEventListener('keydown', function(event){
+    if(!canvas) return;
+    if(!gameRunning || gameEnded) return;
+
+    if(event.code === 'ArrowLeft'){
+      event.preventDefault();
+      move(-1);
+    }else if(event.code === 'ArrowRight'){
+      event.preventDefault();
+      move(1);
+    }else if(event.code === 'ArrowDown'){
+      event.preventDefault();
+      drop();
+    }else if(event.code === 'ArrowUp'){
+      event.preventDefault();
+      rotatePlayer();
+    }else if(event.code === 'Space'){
+      event.preventDefault();
+      hardDrop();
+    }
+  }, { passive:false });
+
+  btnLeft.addEventListener('click', () => move(-1));
+  btnRight.addEventListener('click', () => move(1));
+  btnDown.addEventListener('click', () => drop());
+  btnRotate.addEventListener('click', () => rotatePlayer());
+  btnDrop.addEventListener('click', () => hardDrop());
+
+  startBtn.addEventListener('click', startGame);
+  continueBtn.addEventListener('click', function(){
+    hide(winOverlay);
+  });
+
+  restartBtn.addEventListener('click', function(){
+    resetGame();
+    startGame();
+  });
+  /* =======================================================
+     [FIM] EVENTOS
+  ======================================================== */
+
+  /* =======================================================
+     [INÍCIO] BOOT
+  ======================================================== */
+  resetGame();
+  show(startOverlay);
+  draw();
+  /* =======================================================
+     [FIM] BOOT
+  ======================================================== */
+})();
+ /* =========================================================
+    [FIM] JS — TETRIS PÁGINA 3
+ ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 8) PÁGINA 4 — ESCAPE ROOM / CHAVES
+  ========================================================== */
+  const solvedKeys = new Set();
+  const codeMsg = $("#codeMsg");
+  const unlockBox = $("#unlockBox");
+  const escapeQuestions = $$(".escapeQuestion");
+  const totalEscapeQuestions = escapeQuestions.length;
+  const secretCode = escapeQuestions.map(q => q.dataset.key).join("");
+  let escapeUnlocked = false;
+  let certificateCode = "";
+
+  function cleanCodePart(v, max=8){
+    return normalizeText(v).replace(/[^A-Z0-9]/g, "").slice(0, max) || "X";
+  }
+
+  function studentInitials(){
+    const parts = normalizeText(certName.textContent).split(/\s+/).filter(Boolean);
+    const first = parts[0]?.[0] || "X";
+    const last = parts.length > 1 ? parts[parts.length - 1][0] : "X";
+    return `${first}${last}`;
+  }
+
+  function strongHash(text){
+    let h1 = 0x811c9dc5;
+    let h2 = 0x9e3779b9;
+    for(let i=0; i<text.length; i++){
+      const c = text.charCodeAt(i);
+      h1 ^= c;
+      h1 = Math.imul(h1, 16777619);
+      h2 ^= (c + i);
+      h2 = Math.imul(h2, 1597334677);
+    }
+    const n = ((h1 >>> 0).toString(36) + (h2 >>> 0).toString(36)).toUpperCase();
+    return n.replace(/[^A-Z0-9]/g, "").slice(0, 10).padEnd(10, "0");
+  }
+
+  function buildCertificateCode(){
+    const name = cleanCodePart(certName.textContent, 10);
+    const school = cleanCodePart(certSchool.textContent, 6);
+    const turma = cleanCodePart(certClass.textContent, 6);
+    const date = todayBR().replace(/\D/g, "");
+    const base = `${name}|${school}|${turma}|${date}|${secretCode}|${totalEscapeQuestions}|FALANGE-AULA11-VALIDACAO-LOCAL`;
+    const hash = strongHash(base);
+    return `FLG11-${studentInitials()}-${turma}-${date.slice(0,4)}-${hash}-${totalEscapeQuestions}Q`;
+  }
+
+  function buildFingerprint(){
+    const name = normalizeText(certName.textContent);
+    const school = normalizeText(certSchool.textContent);
+    const turma = normalizeText(certClass.textContent);
+    return `${studentInitials()} • ${turma || "TURMA"} • ${todayBR()} • ${strongHash(name + "|" + school + "|" + turma).slice(0,6)}`;
+  }
+
+  function setCertificateLock(isLocked){
+    const btn = $("#openCertificateBtn");
+    if(!btn) return;
+    btn.disabled = isLocked;
+    btn.textContent = isLocked ? "CERTIFICADO BLOQUEADO" : "ABRIR CERTIFICADO VALIDADO";
+  }
+  setCertificateLock(true);
+
+  function updateCertificateValidation(){
+    certificateCode = buildCertificateCode();
+    const anti = $("#certAntiCode");
+    const antiW = $("#certAntiCodeWatermark");
+    const fp = $("#certFingerprint");
+    const cloud = $("#certWatermarkCloud");
+    const fingerprint = buildFingerprint();
+    if(anti) anti.textContent = certificateCode;
+    if(antiW) antiW.textContent = certificateCode;
+    if(fp) fp.textContent = fingerprint;
+    if(cloud){
+      const wm = `NOME: ${certName.textContent} • TURMA: ${certClass.textContent} • ESCOLA: ${certSchool.textContent} • DATA: ${todayBR()} • CÓDIGO: ${certificateCode}`;
+      cloud.innerHTML = Array.from({length:18}, () => `<div class="certWmItem">${wm}</div>`).join("");
+    }
+  }
+
+  function updateKeyVisual(letter){
+    const slot = document.getElementById(`slot${letter}`);
+    if(slot) slot.classList.add("on");
+  }
+
+  escapeQuestions.forEach(question=>{
+    const key = question.dataset.key;
+    const buttons = $$(".escapeChoice", question);
+
+    buttons.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        if(solvedKeys.has(key)) return;
+        buttons.forEach(b=> b.classList.remove("good", "bad"));
+
+        if(btn.dataset.correct === "true"){
+          btn.classList.add("good");
+          solvedKeys.add(key);
+          updateKeyVisual(key);
+        }else{
+          btn.classList.add("bad");
+        }
+
+        codeMsg.textContent = solvedKeys.size === totalEscapeQuestions
+          ? `Todas as ${totalEscapeQuestions} chaves foram liberadas. Digite o código ${secretCode}.`
+          : `Chaves liberadas: ${solvedKeys.size}/${totalEscapeQuestions}`;
+      });
+    });
+  });
+
+  $("#checkCodeBtn").addEventListener("click", ()=>{
+    if($("#page4") && $("#page4").dataset.locked === "true"){
+      codeMsg.textContent = "Página 4 bloqueada: conclua primeiro as páginas 1, 2 e 3.";
+      return;
+    }
+    const code = normalizeText($("#finalCode").value);
+    if(solvedKeys.size < totalEscapeQuestions){
+      codeMsg.textContent = `Você ainda não liberou todas as ${totalEscapeQuestions} chaves.`;
+      return;
+    }
+
+    if(code === secretCode){
+      escapeUnlocked = true;
+      updateCertificateValidation();
+      setCertificateLock(false);
+      unlockBox.style.display = "block";
+      codeMsg.textContent = `Código correto! Cofre aberto. Certificado validado com código ${certificateCode}.`;
+    }else{
+      escapeUnlocked = false;
+      setCertificateLock(true);
+      codeMsg.textContent = "Código incorreto. Confira a ordem das chaves de A até T.";
+    }
+  });
+  /* =========================================================
+     [FIM] 8) PÁGINA 4 — ESCAPE ROOM / CHAVES
+  ========================================================== */
+
+  /* =========================================================
+     [INÍCIO] 9) CERTIFICADO
+  ========================================================== */
+  const certOverlay = $("#certOverlay");
+
+  $("#openCertificateBtn").addEventListener("click", ()=>{
+    if($("#page4") && $("#page4").dataset.locked === "true"){
+      codeMsg.textContent = "Certificado bloqueado: conclua primeiro as páginas 1, 2 e 3.";
+      return;
+    }
+    const code = normalizeText($("#finalCode").value);
+    if(!escapeUnlocked || solvedKeys.size < totalEscapeQuestions || code !== secretCode){
+      codeMsg.textContent = "Certificado bloqueado: conclua as 20 perguntas e abra o cofre corretamente.";
+      return;
+    }
+    updateCertificateValidation();
+    certOverlay.style.display = "flex";
+  });
+  $("#closeCertBtn").addEventListener("click", ()=>{
+    certOverlay.style.display = "none";
+  });
+  $("#printCertBtn").addEventListener("click", ()=>{
+    if(!escapeUnlocked){
+      alert("Certificado bloqueado: abra o cofre corretamente antes de imprimir.");
+      return;
+    }
+    updateCertificateValidation();
+    window.print();
+  });
+  document.addEventListener("keydown", (e)=>{
+    const key = String(e.key).toLowerCase();
+    const isPrint = (e.ctrlKey || e.metaKey) && key === "p";
+    const isPrintScreen = key === "printscreen" || e.key === "PrintScreen";
+    const isSave = (e.ctrlKey || e.metaKey) && key === "s";
+    if(isPrint && !escapeUnlocked){
+      e.preventDefault();
+      alert("Impressão bloqueada: finalize o Escape Room e gere o código antifraude.");
+      return;
+    }
+    if((isPrintScreen || isSave) && certOverlay.style.display === "flex"){
+      updateCertificateValidation();
+      alert("Atenção: certificado por print só é válido se a marca d’água, o identificador e o código baterem com nome, turma e data.");
+    }
+  });
+  document.addEventListener("contextmenu", (e)=>{
+    if(certOverlay.style.display === "flex"){
+      e.preventDefault();
+      alert("Menu bloqueado no certificado. Use o botão IMPRIMIR após validação.");
+    }
+  });
+  certOverlay.addEventListener("click", (e)=>{
+    if(e.target === certOverlay) certOverlay.style.display = "none";
+  });
+  /* =========================================================
+     [FIM] 9) CERTIFICADO
+  ========================================================== */
+    updatePage4Lock();
+</script>
+
+<audio id="duckLaughAudio" preload="auto"><source src="risadinha-de-ladrao.mp3" type="audio/mpeg"></audio>
+</body>
+</html>
